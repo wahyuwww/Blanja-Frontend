@@ -17,6 +17,7 @@ const EditProduct = () => {
      const [stock, setStock] = useState("");
      const [price, setPrice] = useState("");
      const [typestock, setTypestock] = useState("");
+     const [merk, setMerk] = useState("");
      const [imagePreview, setImagePreview] = useState(
        "https://fakeimg.pl/350x200/"
      );
@@ -29,6 +30,7 @@ const EditProduct = () => {
       data.append("price", price);
       data.append("typestock", typestock);
       data.append("image", image);
+      data.append("merk", merk);
         e.preventDefault();
         axios
           .put(`http://localhost:4000/v1/products/${id}`, data, {
@@ -42,20 +44,6 @@ const EditProduct = () => {
             console.log("err", err);
           });
     };
-  // const handleRegister = (e) => {
-  //   e.preventDefault();
-  //   axios
-  //     .put(`http://localhost:4000/v1/products/${id}`, dataRegister)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       navigate("/productList");
-  //     })
-  //     .catch((e) => {
-  //       // console.log(e);
-  //       // console.log(e.response.data.message);
-  //       alert(e.response.data.message);
-  //     });
-  // };
     useEffect(() => {
         getProductById();
     }, []);
@@ -69,10 +57,13 @@ const EditProduct = () => {
   const getProductById = async () => {
     const response = await axios.get(`http://localhost:4000/v1/products/${id}`);
     console.log(response.data.data.image)
-    setImagePreview(response.data.data.image);
+    setImagePreview(response.data.data.image)
+    // setImage(response.data.data.image)
     setName(response.data.data.name)
+    setMerk(response.data.data.merk)
     setPrice(response.data.data.price)
     setStock(response.data.data.stock)
+    setTypestock(response.data.data.typestock)
     setDeskripsion(response.data.data.description)
   }
   return (
@@ -89,7 +80,7 @@ const EditProduct = () => {
                   <div className="col-sm-8">
                     <div className="mb-3 row failed">
                       <label
-                        for="Name"
+                        htmlFor="Name"
                         className="col-sm-4 col-form-label text-secondary"
                       >
                         Name of goods
@@ -116,7 +107,7 @@ const EditProduct = () => {
                   <div className="col-sm-8">
                     <div className="mb-3 row">
                       <label
-                        for="Name"
+                        htmlFor="Name"
                         className="col-sm-4 col-form-label text-secondary"
                       >
                         Unit price
@@ -135,7 +126,26 @@ const EditProduct = () => {
                   <div className="col-sm-8">
                     <div className="mb-3 row">
                       <label
-                        for="Name"
+                        htmlFor="Name"
+                        className="col-sm-4 col-form-label text-secondary"
+                      >
+                        Unit price
+                      </label>
+                      <input
+                        id="floatingPassword"
+                        name="merk"
+                        type="text"
+                        value={merk}
+                        placeholder="Merk"
+                        onChange={(e) => setMerk(e.target.value)}
+                        className="form-control form-control-lg ms-2 mt-2 name-input"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-sm-8">
+                    <div className="mb-3 row">
+                      <label
+                        htmlFor="Name"
                         className="col-sm-4 col-form-label text-secondary"
                       >
                         Stock
@@ -153,14 +163,14 @@ const EditProduct = () => {
                   </div>
                   <div className="col-sm-8 mt-3 mb-4">
                     <label
-                      for="Name"
+                      htmlFor="Name"
                       className="col-sm-12 col-form-label ms-2 mb-2 text-secondary"
                     >
                       Stock
                     </label>
                     <div className="stock-radio">
                       <input
-                        className="form-check-input"
+                        className="form-check-input me-2"
                         type="radio"
                         name="typestock"
                         value="baru"
@@ -168,13 +178,13 @@ const EditProduct = () => {
                         onChange={(e) => setTypestock(e.target.value)}
                       />
                       <label
-                        className="form-check-label text-secondaryms-2"
-                        for="flexRadioDefault1"
+                        className="form-check-label text-secondary me-2"
+                        htmlFor="flexRadioDefault1"
                       >
                         baru
                       </label>
                       <input
-                        className="form-check-input"
+                        className="form-check-input ms-3"
                         type="radio"
                         name="typestock"
                         value="bekas"
@@ -183,7 +193,7 @@ const EditProduct = () => {
                       />
                       <label
                         className="form-check-label text-secondary ms-2"
-                        for="flexRadioDefault1 "
+                        htmlFor="flexRadioDefault1 "
                       >
                         Bekas
                       </label>

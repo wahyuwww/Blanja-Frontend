@@ -8,8 +8,8 @@ import shoping from "../../assets/image/clipboard 1 (1).png";
 
 const EditProfil = () => {
   return (
-    <div class="my-bag">
-      <div class="row">
+    <div className="my-bag">
+      <div className="row">
         <Profil
           titleOne="My Account"
           titleTwo="Shipping Adrress"
@@ -18,106 +18,106 @@ const EditProfil = () => {
   imgTwo={ pekage }
   imgTheree={ shoping }
         />
-        <div class="col-lg-7 profil-form">
-          <div class="card mt-3">
-            <div class="card-body">
-              <h3 class="title-profil">My Profile</h3>
-              <p class="sub-profil text-secondary">
+        <div className="col-lg-7 profil-form">
+          <div className="card mt-3">
+            <div className="card-body">
+              <h3 className="title-profil">My Profile</h3>
+              <p className="sub-profil text-secondary">
                 Manage your profile information
               </p>
               <hr />
-              <div class="row">
-                <div class="col-sm-9">
-                  <div class="mb-3 mt-1 row">
+              <div className="row">
+                <div className="col-sm-9">
+                  <div className="mb-3 mt-1 row">
                     <label
-                      for="Name"
-                      class="col-sm-3 col-form-label text-end text-form"
+                      htmlFor="Name"
+                      className="col-sm-3 col-form-label text-end text-form"
                     >
                       Name
                     </label>
-                    <div class="col-sm-8">
+                    <div className="col-sm-8">
                       <input
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         value="Johanes Mikael"
                       />
                     </div>
                   </div>
-                  <div class="mb-4 row">
+                  <div className="mb-4 row">
                     <label
-                      for="email"
-                      class="col-sm-3 col-form-label text-end text-form"
+                      htmlFor="email"
+                      className="col-sm-3 col-form-label text-end text-form"
                     >
                       Email
                     </label>
-                    <div class="col-sm-8">
+                    <div className="col-sm-8">
                       <input
                         type="email"
-                        class="form-control"
+                        className="form-control"
                         value="johanes@gmail.com"
                       />
                     </div>
                   </div>
-                  <div class="mb-4 row">
+                  <div className="mb-4 row">
                     <label
-                      for="phoneNumber"
-                      class="col-sm-3 col-form-label text-end text-form"
+                      htmlFor="phoneNumber"
+                      className="col-sm-3 col-form-label text-end text-form"
                     >
                       Phone number
                     </label>
-                    <div class="col-sm-8">
+                    <div className="col-sm-8">
                       <input
                         type="number"
-                        class="form-control"
+                        className="form-control"
                         id="inputPassword"
                         value="08901289012"
                       />
                     </div>
                   </div>
-                  <div class="mb-4 row">
+                  <div className="mb-4 row">
                     <label
-                      for="gender"
-                      class="col-sm-3 col-form-label text-end text-form"
+                      htmlFor="gender"
+                      className="col-sm-3 col-form-label text-end text-form"
                     >
                       Gender
                     </label>
-                    <div class="col-sm-8">
+                    <div className="col-sm-8">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="radio"
                         name="flexRadioDefault"
                         id="flexRadioDefault1"
                       />
                       <label
-                        class="form-check-label text-secondary"
-                        for="flexRadioDefault1"
+                        className="form-check-label text-secondary"
+                        htmlFor="flexRadioDefault1"
                       >
                         Laki-laki
                       </label>
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="radio"
                         name="flexRadioDefault"
                         id="flexRadioDefault1"
                       />
                       <label
-                        class="form-check-label text-secondary"
-                        for="flexRadioDefault1"
+                        className="form-check-label text-secondary"
+                        htmlFor="flexRadioDefault1"
                       >
                         Perempuan
                       </label>
                     </div>
                   </div>
-                  <div class="mb-4 row">
+                  <div className="mb-4 row">
                     <label
-                      for="inputPassword"
-                      class="col-sm-3 col-form-label text-end text-form"
+                      htmlFor="inputPassword"
+                      className="col-sm-3 col-form-label text-end text-form"
                     >
                       Date of birth
                     </label>
-                    <div class="col-sm-2">
+                    <div className="col-sm-2">
                       <select
-                        class="form-select"
+                        className="form-select"
                         aria-label="Default select example"
                       >
                         <option selected>1</option>
@@ -126,9 +126,9 @@ const EditProfil = () => {
                         <option value="3">3</option>
                       </select>
                     </div>
-                    <div class="col-sm-3">
+                    <div className="col-sm-3">
                       <select
-                        class="form-select"
+                        className="form-select"
                         aria-label="Default select example"
                       >
                         <option selected>Januari</option>
@@ -137,9 +137,9 @@ const EditProfil = () => {
                         <option value="3">April</option>
                       </select>
                     </div>
-                    <div class="col-sm-3">
+                    <div className="col-sm-3">
                       <select
-                        class="form-select"
+                        className="form-select"
                         aria-label="Default select example"
                       >
                         <option selected>1990</option>
@@ -149,18 +149,18 @@ const EditProfil = () => {
                       </select>
                     </div>
                   </div>
-                  <div class="mb-3 row">
-                    <div class="col-sm-9">
-                      <button type="button" class="btn btn-submit">
+                  <div className="mb-3 row">
+                    <div className="col-sm-9">
+                      <button type="button" className="btn btn-submit">
                         Save
                       </button>
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-3 image-profil text-center">
-                  <img src={avatar} class="rounded-circle" alt="" />
-                  <div class="select-avatar mt-3">
-                    <button class="btn btn-select-profil">Select image</button>
+                <div className="col-sm-3 image-profil text-center">
+                  <img src={avatar} className="rounded-circle" alt="" />
+                  <div className="select-avatar mt-3">
+                    <button className="btn btn-select-profil">Select image</button>
                   </div>
                 </div>
               </div>

@@ -6,31 +6,34 @@ import logo from "../../../assets/image/belanja.svg";
 import filter from "../../../assets/image/filter.png"
 import cart from "../../../assets/image/search.svg"
 import axios from "axios"
-
+import Button from '../../Button/Button'
 const Navbar = () => {
-      const [search, setSearch] = useState("");
-      let [searchParams, setSearchParams] = useSearchParams({});
-      const handleSearch = () => {
-        setSearchParams({ search: search });
-      };
-      // useEffect(() => {
-      //   console.log(searchParams.get("keyword"));
-      // }, [searchParams]);
-    useEffect(() => {
-      axios
-        .get(
-          `https://belanjain-aja.herokuapp.com/v1/products/filter/?${searchParams}`
-        )
-        .then((res) => {
-          setSearch(res.data.data);
-          console.log(res.data.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      console.log(search);
-    }, [searchParams]);
-      
+  const [search, setSearch] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams([]);
+  const handleSearch = () => {
+    setSearchParams({ search: search });
+  };
+  const getProducts = async () => {
+    axios
+      .get(
+        `${process.env.REACT_APP_API_BACKEND}/products/filter/?${searchParams}`
+      )
+      .then((res) => {
+        setSearch(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    getProducts();
+    // console.log(searchParams.get("search"));
+  }, [searchParams]);
+ 
+  console.log( search);
+  // const searchItem ={
+  //   search
+  // }
   return (
     <div>
       <nav className="navbar navbar-expand-md navbar-light fixed-top mb-4">
@@ -74,48 +77,53 @@ const Navbar = () => {
               <button className="btn btn-outline-light filter">
                 <img src={filter} alt="" />
               </button>
+              {/* {search.map((item) => (
+                <p>{ item.name}</p>
+              ))} */}
+              {/* <h5>{search} test</h5> */}
+              {/* <h4>{search.name}</h4>
+              <h4>{search.price}</h4>
+              <h4>{search.description}</h4>
+              <h4>{search.image}</h4>
+              <h4>{search.stock}</h4>
+              <ul>
+                <li key={search.id}>data = {search.name}</li>
+              </ul> */}
             </ul>
             <form className="ms-2 ">
-              <img src={cart} alt="" className="icon-cart me-4" />
+              <Link to="/login">
+                <img src={cart} alt="" className="icon-cart me-4" />
+              </Link>
             </form>
             <form className="d-flex float-right">
               <Link to="/login">
-                <button className="btn button-login me-2" type="button">
-                  {" "}
-                  login
-                </button>
+                <Button
+                  type="button"
+                  className="btn button-login me-2"
+                  title=" login"
+                >
+                </Button>
               </Link>
               <Link to="/Register">
-                <button
+                <Button
                   type="button"
                   className="btn btn-outline-secondary button-signup  me-3"
-                >
+                  title="sign up"
+                ></Button>
+                {/* <button className="btn btn-outline-secondary button-signup  me-3">
                   {" "}
                   sign up
-                </button>
+                </button> */}
               </Link>
             </form>
           </div>
         </div>
       </nav>
       <nav className="footer-nav bg-light text-center fixed-bottom">
-        {/* <div className="input-group rounded nav-search-buttom text-center mt-1">
-          <input
-            type="search"
-            className="form-control search-input-nav"
-            placeholder="Search"
-            aria-label="Search"
-            aria-describedby="search-addon"
-          />
-          <span className="input-group-text search bg-light" id="search-addon">
-            <i className="bi bi-search"></i>
-          </span>
-        </div> */}
-
-        <button className="btn btn-secondary me-2">
+        <button className="btn btn-light me-2">
           <i className="bi bi-search "></i>
         </button>
-        <button className="btn btn-secondary me-2">
+        <button className="btn btn-light me-2">
           <img src={search} alt="" className="bi bi-cart" />
         </button>
         <Link to="/login">

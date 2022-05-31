@@ -1,19 +1,20 @@
-import React from 'react'
+import React, { Component } from 'react'
 import bag from "../../assets/image/bag.png";
 import Rectangle from "../../assets/image/Rectangle 605.png";
 import shape from "../../assets/image/Shape.png";
 import Total from "../Total/Total";
 import './cart.css'
 
-const Checkout = () => {
-  return (
-    <div class="container my-check">
-      <h3 class="title-bag">Checkout</h3>
-      <p class="sub-chekout">Shipping Adress</p>
-      <div class="row ">
-        <div class="col-lg-8 pl-lg-0">
-          <div class="card mb-3 ">
-            <div class="card-body">
+export class Checkout extends Component {
+  render() {
+    return (
+       <div className="container my-check">
+      <h3 className="title-bag">Checkout</h3>
+      <p className="sub-chekout">Shipping Adress</p>
+      <div className="row ">
+        <div className="col-lg-8 pl-lg-0">
+          <div className="card mb-3 ">
+            <div className="card-body">
               <h4>Andreas Jane</h4>
               <p>
                 Perumahan Sapphire Mediterania, Wiradadi, Kec. Sokaraja,
@@ -21,7 +22,7 @@ const Checkout = () => {
                 16] Sokaraja, Kab. Banyumas, 53181
               </p>
               <button
-                class=" btn btn-address"
+                className=" btn btn-address"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
                 type="button"
@@ -30,42 +31,43 @@ const Checkout = () => {
               </button>
             </div>
           </div>
-          <div class="card mb-3 ">
-            <div class="table-responsive-sm">
-              <table class="table">
+          <div className="card mb-3 ">
+            <div className="table-responsive-sm">
+              <table className="table">
                 <tbody>
-                  <td class="align-middle text-center ">
-                    <img class="img-products" src={bag} alt="checkout" />
+                  <td className="align-middle text-center ">
+                    <img className="img-products" src={bag} alt="checkout" />
                   </td>
-                  <td class="align-middle">
-                    <p class="post mb-1">Men's formal suit -</p>
-                    <span class="text-secondary sub-post">Zalora Cloth</span>
+                  <td className="align-middle">
+                    <p className="post mb-1">Men's formal suit -</p>
+                    <span className="text-secondary sub-post">Zalora Cloth</span>
                   </td>
-                  <td class="align-middle text-end">
+                  <td className="align-middle text-end">
                     <tr>
-                      <button class="btn btn-secondary min">
-                        <img src={Rectangle} alt="" class="icon-min" />
+                      <button className="btn btn-secondary min">
+                        <img src={Rectangle} alt="" className="icon-min" />
                       </button>
                     </tr>
                   </td>
-                  <td class="align-middle one text-center">1</td>
-                  <td class="align-middle ">
+                  <td className="align-middle one text-center">1</td>
+                  <td className="align-middle ">
                     <tr>
-                      <button class="btn btn-light max">
-                        <img src={shape} alt="" class="icon-max" />
+                      <button className="btn btn-light max">
+                        <img src={shape} alt="" className="icon-max" />
                       </button>
                     </tr>
                   </td>
-                  <td class="align-middle price">$ 20.0</td>
+                  <td className="align-middle price">$ 20.0</td>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-        <Total />
+        <Total deleveri="Delevery" shopping="Shopping Payment"Sumprice="$80.0"price="$ 40.0"/>
       </div>
     </div>
-  );
+    )
+  }
 }
 
 export default Checkout

@@ -17,22 +17,6 @@ const Search = () => {
             })
           console.log(searchParams.get("keyword"));
         }, [searchParams]);
-    
-    //  useEffect(() => {
-    //    if (searchParams) {
-    //      axios
-    //        .get(`http://127.0.0.1:8000/api/${searchParams}`)
-    //        .then((res) => {
-    //          console.log(res);
-    //          setSearch(res.data);
-    //        })
-    //        .catch((err) => {
-    //          console.log(err);
-    //        });
-    //    }
-    //  }, [searchParams]);
-
-    
   return (
     <div>
       <input

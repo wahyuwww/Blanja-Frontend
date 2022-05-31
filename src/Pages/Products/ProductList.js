@@ -8,18 +8,6 @@ import NavbarAfterLogin from "../../components/home/navbar/NavbarAfterLogin";
 const ProductList = () => {
     const [products, getProducts] = useState([]);
     const navigate = useNavigate()
-    // const getData = () => {
-    //   fetch("http://localhost:4000/v1/products/AllProduct")
-    //     .then((res) => res.json())
-    //     .then((res) => {
-    //       console.log(res.data[0].image.split(",")[0]);
-    //       setProducts(res.data);
-    //     });
-    // };
-
-    // useEffect(() => {
-    //   getData();
-    // }, []);
     async function fetchData() {
       try {
         const result = await axios({
@@ -27,7 +15,6 @@ const ProductList = () => {
           baseURL: "http://localhost:4000/v1",
           url: "/products/AllProduct",
         });
-        // console.log(result.data.data[1].image.split(",")[1]);
         getProducts(result.data.data);
       } catch (error) {
         console.log(error);
@@ -49,20 +36,20 @@ const ProductList = () => {
     <div className="my-bag">
       <NavbarAfterLogin />
       <div className="row">
-        <Profil  />
+        <Profil myProduct=" My Product" selling="Selling Product" />
         <div className="col-lg-7 profil-form">
           <div className="card mt-3">
             <div className="card-body">
               <button
                 onClick={() => navigate("/")}
-                className="btn btn-light me-5"
+                className="btn btn-secondary me-5"
               >
-                kembali ke home
+                Back to home
               </button>
               <Link to="/Selling" className="btn btn-success">
                 Add New
               </Link>
-              <div class="table-responsive mt-4">
+              <div className="table-responsive mt-4">
                 <table className="table">
                   <thead className="table-dark">
                     <tr>
@@ -89,13 +76,13 @@ const ProductList = () => {
                         <td>
                           <Link
                             to={`/edit/${item.id}`}
-                            className="button is-small is-info"
+                            className="btn btn-primary "
                           >
                             Edit
                           </Link>
                           <button
                             onClick={() => deleteCategory(item.id)}
-                            className="btn btn-primary"
+                            className="btn btn-danger mt-1"
                           >
                             Delete
                           </button>

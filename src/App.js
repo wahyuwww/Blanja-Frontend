@@ -22,24 +22,17 @@ import Profil from './Pages/Profil';
 function App() {
  return (
    <BrowserRouter>
-     {/* <nav>
-       <ul>
-         <li>
-           <NavLink to="/">Home</NavLink>
-         </li>
-       </ul>
-     </nav> */}
      <Routes>
        <Route path="/" element={<Navigate to="/Home" replace="true" />} />
+       <Route path="/home" element={<Home />} />
+       <Route path="/detail/:id" element={<Detail />} />
        <Route path="/login" element={<Login />} />
        <Route path="/register" element={<Register />} />
+       <Route path="/productList" element={<ProductList />} />
+       <Route path="/edit/:id" element={<EditProduct />} />
        <Route path="/Selling" element={<CreateProduct />} />
        <Route path="/Bag" element={<PageBag />} />
        <Route path="/Checkout" element={<Checkout />} />
-       <Route path="/edit/:id" element={<EditProduct />} />
-       <Route path="/productList" element={<ProductList />} />
-       <Route path="/home" element={<Home />} />
-       <Route path="/detail/:id" element={<Detail />} />
        <Route path="/profil" element={<Profil />} />
      </Routes>
    </BrowserRouter>

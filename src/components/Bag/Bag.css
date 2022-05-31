@@ -139,7 +139,7 @@ font-size: 18px;
 line-height: 16px;
 color: #222222;
 }
-.total-price{
+.sum-price{
    color: #9B9B9B;
    font-weight: 500;
    line-height: 16px;
@@ -159,6 +159,9 @@ color: #222222;
     /* background-color: red; */
     margin: 20px 0px 3px -80px;
     width: 300px;
+  }
+  .card-details{
+      margin-bottom: 100px;
   }
   .filter{
     /* background-color: blue; */

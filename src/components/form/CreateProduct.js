@@ -4,76 +4,26 @@ import axios from "axios";
 import "../form/styleCreate.css";
 import Profil from "../profil/Profil";
 import Input from "./Input"
+import deskripsi from "../../assets/image/seling-product/summernote.png";
 
 const CreateProduct = () => {
     const navigate = useNavigate();
-    const [image, setImage] = useState("https://fakeimg.pl/350x400/");
+    const [image, setImage] = useState("https://fakeimg.pl/350x250/");
     const [name, setName] = useState('')
     const [description, setDeskripsion] = useState('')
     const [stock, setStock] = useState('')
+    const [merk, setMerk] = useState("");
     const [price, setPrice] = useState('')
     const [typestock, setTypestock] = useState("");
     const [imagePreview, setImagePreview] = useState(
-      "https://fakeimg.pl/350x400/"
+      "https://fakeimg.pl/350x250/"
     );
-    // const [saveImage, setSaveImage] = useState(null)
-   
-    // const uploadGambar = () => {
-    //     if (!saveImage) {
-    //         alert("data tidak masuk")
-    //     } else {
-    //         let formdata = new FormData();
-    //         formdata.append("photo", saveImage)
-    //         fetch("http://localhost:4000/v1/products/", {
-    //             method: "POST",
-    //             body : FormData,
-    //         }).then((res) => res.json()).then(data => {
-    //             if (data.status === "success") {
-    //                 window.location.href = data.image
-    //             }
-    //         })
-    //     }
-    // }
-//   const [dataProduct, setDataProduct] = useState({
-//     name: "",
-//     stock: "",
-//     description: "",
-//     price: "",
-//     typestock: "",
-//     image: "",
-//   });
-
-//      const handleUpload = (e) => {
-//         let upload = e.target.files[0].name;
-//         setImage(`http://localhost:4000/img/${upload}`);
-//         console.log(`http://localhost:4000/img/${upload}`);
-//         console.log(e.target.files[0].name);
-//      };;
-//     const handleChange = (e) => {
-//         setDataProduct({
-//             ...dataProduct,
-//         // [e.target.name]: e.target.files[0].name,
-//         [e.target.name]: e.target.value,
-//         });
-//           console.log(e.target.value);
-//     };
-//   const handleProduct = (e) => {
-//     e.preventDefault();
-//     axios
-//       .post("http://localhost:4000/v1/products/", dataProduct)
-//       .then((res) => {
-//         console.log(res.data.typestock);
-//         navigate("/productList");
-//       })
-//       .catch((e) => {
-//         alert(e.response.data.message);
-//       });
-//   };
     const onSubmit = (e) => {
       const data = new FormData();
       data.append("name", name);
       data.append("description", description);
       data.append("stock", stock);
+      data.append("merk", merk);
       data.append("price", price);
       data.append("typestock", typestock);
       data.append("image", image);
@@ -108,17 +58,19 @@ const CreateProduct = () => {
                   <div className="col-sm-8">
                     <div className="mb-3 row">
                       <label
-                        for="Name"
+                        htmlFor="Name"
                         className="col-sm-4 col-form-label text-secondary"
                       >
                         Name of goods
                       </label>
-                      <Input  id="floatingInput"
+                      <Input
+                        id="floatingInput"
                         name="name"
                         type="text"
                         value={name}
                         placeholder="Name"
-                        onChange={(e) => setName(e.target.value)}/>
+                        onChange={(e) => setName(e.target.value)}
+                      />
                     </div>
                   </div>
                 </div>
@@ -132,7 +84,7 @@ const CreateProduct = () => {
                   <div className="col-sm-8">
                     <div className="mb-3 row">
                       <label
-                        for="Name"
+                        htmlFor="Name"
                         className="col-sm-4 col-form-label text-secondary"
                       >
                         Unit price
@@ -147,11 +99,28 @@ const CreateProduct = () => {
                         className="form-control form-control-lg ms-2 mt-2 name-input"
                       />
                     </div>
+                    <div className="mb-3 row">
+                      <label
+                        htmlFor="Merk"
+                        className="col-sm-4 col-form-label text-secondary"
+                      >
+                        Unit Merk
+                      </label>
+                      <input
+                        id="floatingPassword"
+                        name="merk"
+                        type="text"
+                        value={merk}
+                        placeholder="merk"
+                        onChange={(e) => setMerk(e.target.value)}
+                        className="form-control form-control-lg ms-2 mt-2 name-input"
+                      />
+                    </div>
                   </div>
                   <div className="col-sm-8">
                     <div className="mb-3 row">
                       <label
-                        for="Name"
+                        htmlFor="Name"
                         className="col-sm-4 col-form-label text-secondary"
                       >
                         Stock
@@ -169,7 +138,7 @@ const CreateProduct = () => {
                   </div>
                   <div className="col-sm-8 mt-3 mb-4">
                     <label
-                      for="Name"
+                      htmlFor="Name"
                       className="col-sm-12 col-form-label ms-2 mb-2 text-secondary"
                     >
                       Stock
@@ -185,7 +154,7 @@ const CreateProduct = () => {
                       />
                       <label
                         className="form-check-label text-secondary ms-2"
-                        for="flexRadioDefault1"
+                        htmlFor="flexRadioDefault1"
                       >
                         baru
                       </label>
@@ -199,7 +168,7 @@ const CreateProduct = () => {
                       />
                       <label
                         className="form-check-label text-secondary ms-2"
-                        for="flexRadioDefault1 "
+                        htmlFor="flexRadioDefault1 "
                       >
                         Bekas
                       </label>
@@ -279,13 +248,6 @@ const CreateProduct = () => {
                   <hr className="upload" />
                   <div className="text-center mb-3">
                     <input
-                      //   value={dataProduct.image}
-                      //   onChange={handleUpload}
-                      //   onChange={(event) => {
-                      //       let upload = event.target.files[0].name
-                      //       setDataProduct(`http://localhost:4000/img/${upload}`);
-                      //       console.log(`http://localhost:4000/img/${upload}`);
-                      //   }}
                       onChange={(e) => onImageUpload(e)}
                       className="form-control btn btn-upload"
                       type="file"
@@ -303,7 +265,7 @@ const CreateProduct = () => {
                   <div className="card">
                     <div className="card-body description">
                       <img
-                        src="../image//seling-product/summernote.png"
+                        src={deskripsi}
                         alt=""
                       />
                       <div className="garis"></div>

@@ -92,6 +92,9 @@ line-height: 16px;
     margin: 20px 0px 3px -80px;
     width: 300px;
   }
+   .my-check{
+    margin-top: 10px;
+  }
   .filter{
     /* background-color: blue; */
     margin-left: -70px !important;

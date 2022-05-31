@@ -183,9 +183,7 @@ line-height: 8px;
   display: none;
 }
 @media (max-width:576px) {
-  /* .container{
-    margin-top:10px !important
-  } */
+ 
   .slide{
     margin-top: 10px;
   }

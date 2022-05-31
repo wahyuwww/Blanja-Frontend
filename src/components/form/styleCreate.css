@@ -41,10 +41,10 @@
     margin-left: 12px;
 }
 /* webkit solution */
-::-webkit-input-placeholder { 
+/* ::-webkit-input-placeholder { 
   text-align:right; 
   font-size: 14px;
-}
+} */
 .post{
   font-weight: bold;
   margin-bottom: 15px;
@@ -194,5 +194,6 @@ textarea{
   }
   .btn-jual{
     margin-right: 20px;
+    margin-bottom: 100px;
   }  
 }

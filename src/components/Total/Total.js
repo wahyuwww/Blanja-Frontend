@@ -1,31 +1,41 @@
-import React, { Children } from 'react'
-import '../Bag/Bag.css'
-const Total = ({ Children }) => {
+import React from "react";
+import "../Bag/Bag.css";
+import { Link } from "react-router-dom";
+import Button from "../Button/Button"
+const Total = ({ totalPrice, deleveri, shopping,Sumprice,price }) => {
   return (
-    <div class="col-lg-4">
-            <div class="card card-details card-right">
-              <h3 class="title-shoping">Shopping summary</h3>
-              <table class="mt-2">
-                <tr>
-                  <th class="text-left total-price">Order</th>
-                  <td  class="float-end">$ 40.0</td>
-                </tr>
-                <tr>
-                  <th class="text-left total-price mb-5">Delivery</th>
-                  <td  class="float-end">$ 5.0</td>
-                </tr>
-                </table>
-                <hr/>
-              <table>
-                  <tr>
-                    <th class="total-shopping">Shopping summary</th>
-                    <td  class="float-end text-end">$ 45.0</td>
-                </tr>
-              </table>
-               <button class="mt-3 w-100 btn btn-checkout">Select payment</button>
-            </div>
-          </div>
+    <div className="col-lg-4">
+      <div className="card card-details card-right">
+        <h3 className="title-shoping">Shopping summary</h3>
+        <table className="mt-2">
+          <tr>
+            <th className="text-left sum-price">{totalPrice}</th>
+            <td className="float-end text-black">$ 40.0</td>
+          </tr>
+          <tr>
+            <th className="text-left sum-price">{deleveri}</th>
+            <td className="float-end text-black">{price}</td>
+          </tr>
+        </table>
+        <hr />
+        <table>
+          <tr>
+            <th className="total-shopping">{shopping}</th>
+            <td className="float-end text-end text-black">{Sumprice}</td>
+          </tr>
+        </table>
+        <Link to="/Checkout">
+          <Button
+            className="mt-3 w-100 btn btn-checkout"
+            title=" Select payment"
+          >
+          </Button>
+        </Link>
+      </div>
+    </div>
   );
 };
-
-export default Total
+Total.defaultProps = {
+  totalPrice: "Order",
+};
+export default Total;

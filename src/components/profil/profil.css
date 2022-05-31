@@ -30,32 +30,6 @@ font-size: 15px;
 line-height: 24px;
 margin-top: 5x;
 }
-.btn-acount{
-     background-color: #456BF3;
-    border:  0px;
-}
-.btn-location{
-   background-color: #F36F45;
-    border:  0px;
-}
-.btn-mail{
-    background-color: #F3456F;
-    border:  0px;
-}
-.btn-acount:hover{
-    background-color: #4663ca;   
-    border:  0px;
-}
-.btn-location:hover{
-
-     background-color: #d66b4a;
-    border:  0px;
-}
-.btn-mail:hover{
-    background-color: #ec7591;
-    border:  0px;
-}
-
 @media (max-width: 576px) {
   .search-nav{
     /* width: 100% !important; */

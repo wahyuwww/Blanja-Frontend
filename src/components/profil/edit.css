@@ -34,14 +34,17 @@
 .btn-acount{
     background-color: #F36F45;
     border:  0px;
+     border-radius: 50%;
 }
 .btn-location{
     background-color: #456BF3;
     border:  0px;
+     border-radius: 50%;
 }
 .btn-mail{
     background-color: #F3456F;
     border:  0px;
+     border-radius: 50%;
 }
 .btn-acount:hover{
     background-color: #d66b4a;

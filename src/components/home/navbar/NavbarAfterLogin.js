@@ -80,7 +80,7 @@ const NavbarAfterLogin = () => {
         </div>
       </nav>
       <nav className="footer-nav bg-light text-center fixed-bottom">
-        <div class="content mt-2 mb-2">
+        <div className="content mt-2 mb-2">
           <button
             className="btn btn-light me-3"
             data-bs-toggle="modal"
@@ -88,9 +88,11 @@ const NavbarAfterLogin = () => {
           >
             <i className="bi bi-search"></i>
           </button>
-          <button className="btn btn-light me-3">
-            <img src={cart} alt="" className="icon-cart m-auto" />
-          </button>
+          <Link to="/checkout">
+            <button className="btn btn-light me-3">
+              <img src={cart} alt="" className="icon-cart m-auto" />
+            </button>
+          </Link>
           <button className="btn btn-light me-3">
             <img src={bell} alt="" className="icon-cart  m-auto" />
           </button>

@@ -7,93 +7,93 @@ import avatar from "../../assets/image/edit-avatar.png"
 import pekage from "../../assets/image/seling-product/package 1.png";
 import shoping from "../../assets/image/seling-product/shopping-cart (3) 1.png";
 
-const Profil = ({titleOne,titleTwo,titleThere,imgOne,imgTwo,imgTheree}) => {
+const Profil = ({titleOne,titleTwo,titleThere,imgOne,imgTwo,imgTheree,myProduct,selling}) => {
   return (
-    <div class="col-lg-4 mt-2 select-profil">
-      <div class="profil-avatar ">
+    <div className="col-lg-4 mt-2 select-profil">
+      <div className="profil-avatar ">
         <table>
           <tbody>
-            <td class=" align-middle float-start image">
-              <img class="rounded-circle" src={profil} alt="img" />
+            <td className=" align-middle float-start image">
+              <img className="rounded-circle" src={profil} alt="img" />
             </td>
-            <td class="align-middle float-start ms-3 image-text">
-              <p class="post mb-2">Johanes Mikael</p>
-              <p class=" edit-profil mt-2">
-                <img src={avatar} class="me-2" alt="" />
+            <td className="align-middle float-start ms-3 image-text">
+              <p className="post mb-2">Johanes Mikael</p>
+              <p className=" edit-profil mt-2">
+                <img src={avatar} className="me-2" alt="" />
                 ubah profil
               </p>
             </td>
           </tbody>
         </table>
       </div>
-      <div class="profil-select mt-5">
-        <ul class="list-unstyled ps-0">
-          <li class="mb-1">
-            <button class="btn btn-acount">
+      <div className="profil-select mt-5">
+        <ul className="list-unstyled ps-0 mt-2">
+          <li className="mb-1">
+            <button className="btn btn-acount">
               <img src={imgOne} alt="" />
             </button>
             <button
-              class="btn btn-toggle title-dashboard d-inline-flex align-items-center rounded border-0 collapsed text-secondary"
+              className="btn btn-toggle title-dashboard d-inline-flex align-items-center rounded border-0 collapsed text-secondary"
               data-bs-toggle="collapse"
               data-bs-target="#home-collapse"
               aria-expanded="false"
             >
               {titleOne}
             </button>
-            <img src={vektor} class="img-down" alt="" />
-            <div class="collapse show" id="home-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"></ul>
+            <img src={vektor} className="img-down" alt="" />
+            <div className="collapse show" id="home-collapse">
+              <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small"></ul>
             </div>
           </li>
-          <li class="mb-1 mt-3">
-            <button class="btn btn-location">
+          <li className="mb-1 mt-3">
+            <button className="btn btn-location">
               <img src={imgTwo} alt="" />
             </button>
             <button
-              class="btn btn-toggle title-dashboard d-inline-flex align-items-center rounded border-0 collapsed text-black"
+              className="btn btn-toggle title-dashboard d-inline-flex align-items-center rounded border-0 collapsed text-black"
               data-bs-toggle="collapse"
               data-bs-target="#dashboard-collapse"
               aria-expanded="true"
             >
               {titleTwo}
             </button>
-            <img src={vektor} class="img-down ms-4" alt="" />
-            <div class="collapse show" id="dashboard-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 ms-5 small ">
+            <img src={vektor} className="img-down ms-4" alt="" />
+            <div className="collapse show" id="dashboard-collapse">
+              <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 ms-5 small ">
                 <li>
                   <a
-                    class="link-dark d-inline-flex text-decoration-none rounded ms-3 mt-2"
+                    className="link-dark d-inline-flex text-decoration-none rounded ms-3 mt-2"
                     href="a"
                   >
-                    My products
+                    {myProduct}
                   </a>
                 </li>
                 <li>
                   <a
-                    class="link-dark d-inline-flex text-decoration-none rounded ms-3 mt-3 text-secondary"
+                    className="link-dark d-inline-flex text-decoration-none rounded ms-3 mt-3 text-secondary"
                     href="a"
                   >
-                    Selling products
+                    {selling}
                   </a>
                 </li>
               </ul>
             </div>
           </li>
-          <li class="mb-1 mt-3">
-            <button class="btn btn-mail">
+          <li className="mb-1 mt-3">
+            <button className="btn btn-mail">
               <img src={imgTheree} alt="" />
             </button>
             <button
-              class="btn btn-toggle title-dashboard d-inline-flex align-items-center rounded border-0 collapsed text-secondary"
+              className="btn btn-toggle title-dashboard d-inline-flex align-items-center rounded border-0 collapsed text-secondary"
               data-bs-toggle="collapse"
               data-bs-target="#orders-collapse"
               aria-expanded="false"
             >
               {titleThere}
             </button>
-            <img src={vektor} class="img-down" alt="" />
-            <div class="collapse" id="orders-collapse">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"></ul>
+            <img src={vektor} className="img-down" alt="" />
+            <div className="collapse" id="orders-collapse">
+              <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small"></ul>
             </div>
           </li>
         </ul>

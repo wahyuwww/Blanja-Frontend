@@ -33,7 +33,7 @@ const Login = () => {
               className="form-control mb-3"
               placeholder="email"
             />
-            <label for="floatingInput">Email address</label>
+            <label htmlFor="floatingInput">Email address</label>
           </div>
           <div className="form-floating">
             <input
@@ -41,7 +41,7 @@ const Login = () => {
               className="form-control mt-3"
               placeholder="Password"
             />
-            <label for="floatingPassword">Password</label>
+            <label htmlFor="floatingPassword">Password</label>
           </div>
           <div className="mb-4 mt-4 float-end">
             <label>Forgot password?</label>
@@ -51,7 +51,7 @@ const Login = () => {
               PRIMARY
             </button>
           </Link>
-          <label className="register mb-3 mt-4" for="">
+          <label className="register mb-3 mt-4" htmlFor="">
             Don't have a Tokopedia account?
             <Link className="page-register" to="/register">
               Register

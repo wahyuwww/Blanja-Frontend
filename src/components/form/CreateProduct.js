@@ -28,7 +28,7 @@ const CreateProduct = () => {
       data.append("typestock", typestock);
       data.append("image", image);
         e.preventDefault();
-        axios.post("http://localhost:4000/v1/products/", data, {
+        axios.post(`${process.env.REACT_APP_API_BACKEND}/products/`, data, {
           'content-type': 'multipart/form-data'
         }).then(res => {
             console.log('post success',res);

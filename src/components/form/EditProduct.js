@@ -55,7 +55,7 @@ const EditProduct = () => {
       console.log(URL.createObjectURL(file));
     };
   const getProductById = async () => {
-    const response = await axios.get(`http://localhost:4000/v1/products/${id}`);
+    const response = await axios.get(`${process.env.REACT_APP_API_BACKEND}/products/${id}`);
     console.log(response.data.data.image)
     setImagePreview(response.data.data.image)
     // setImage(response.data.data.image)

@@ -12,7 +12,7 @@ const ProductList = () => {
       try {
         const result = await axios({
           method: "GET",
-          baseURL: "http://localhost:4000/v1",
+          baseURL: process.env.REACT_APP_API_BACKEND,
           url: "/products/AllProduct",
         });
         getProducts(result.data.data);
@@ -25,7 +25,7 @@ const ProductList = () => {
     }, []);
 
    const deleteCategory = (id) => {
-     axios.delete(`http://localhost:4000/v1/products/${id}`).then(() => {
+     axios.delete(`${process.env.REACT_APP_API_BACKEND}/products/${id}`).then(() => {
        alert("delete success");
        fetchData();
        // navigate('/product')

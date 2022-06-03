@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../StyleHome.css";
 import axios from "axios";
 import Card from "../../../base/Card";
-import Input from "../../../base/Input/Input"
+// import Input from "../../../base/Input/Input"
 const Product = ({ title, subtitle }) => {
   
   const [products, setProducts] = useState([]); 

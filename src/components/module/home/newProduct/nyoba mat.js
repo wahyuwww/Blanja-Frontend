@@ -44,7 +44,7 @@ const Product = ({ title, subtitle }) => {
   // ]);
 
   const [products, setProducts] = useState([]);
-  const [searchItem, setSearch] = useState("");
+  // const [searchItem, setSearch] = useState("");
 
   // const getData = () => {
   //   fetch("http://localhost:4000/v1/products/AllProduct")
@@ -99,18 +99,9 @@ const Product = ({ title, subtitle }) => {
             <h3 className="title">{title}</h3>
             <p>{subtitle}</p>
           </div>
-          <input type="text" onChange={(e) => setSearch(e.target.value)} />
+          {/* <input type="text" onChange={(e) => setSearch(e.target.value)} /> */}
           <div className="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-3">
             {products
-              .filter((val) => {
-                if (searchItem === "") {
-                  return val;
-                } else if (
-                  val.name.toLowerCase().includes(searchItem.toLowerCase())
-                ) {
-                  return val;
-                }
-              })
               .map((item) => (
                 <div className="col" key={item.id}>
                   <div className="card shadow-sm">

@@ -1,7 +1,7 @@
 import React from 'react'
-import Footer from '../components/home/footer/Footer'
-import NavbarAfterLogin from '../components/home/navbar/NavbarAfterLogin'
-import EditProfil from '../components/profil/EditProfil'
+import Footer from '../components/module/home/footer/Footer'
+import NavbarAfterLogin from '../components/module/home/navbar/NavbarAfterLogin'
+import EditProfil from '../components/module/profil/EditProfil'
 
 const Profil = () => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react'
-import PageBage from "../components/Bag/Bag";
-import Footer from "../components/home/footer/Footer";
-import NavbarAfterLogin from "../components/home/navbar/NavbarAfterLogin";
+import PageBage from "../components/module/Bag/Bag";
+import Footer from "../components/module/home/footer/Footer";
+import NavbarAfterLogin from "../components/module/home/navbar/NavbarAfterLogin";
 const PageBag = () => {
   return (
     <div>

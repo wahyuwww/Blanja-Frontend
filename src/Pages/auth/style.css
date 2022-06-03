@@ -14,7 +14,7 @@ body {
  @font-face /*perintah untuk memanggil font eksternal*/
 {
     font-family: 'metropolis'; /*memberikan nama bebas untuk font*/
-    src: url('../../components//home//metropolis.regular.otf');/*memanggil file font eksternalnya di folder nexa*/
+    src: url('../../components/module/home//metropolis.regular.otf');/*memanggil file font eksternalnya di folder nexa*/
 }
 .title-login{
     font-size: 18px;

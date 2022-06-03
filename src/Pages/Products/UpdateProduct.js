@@ -1,7 +1,7 @@
 import React from "react";
-import Footer from "../../components/home/footer/Footer";
-import NavbarAfterLogin from "../../components/home/navbar/NavbarAfterLogin";
-import Update from "../../components/form/EditProduct";
+import Footer from "../../components/module/home/footer/Footer";
+import NavbarAfterLogin from "../../components/module/home/navbar/NavbarAfterLogin";
+import Update from "../../components/module/ActionProduct/EditProduct";
 const CreateNew = () => {
   return (
     <div>

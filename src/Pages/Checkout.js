@@ -1,6 +1,6 @@
 import React from 'react'
-import NavbarAfterLogin from '../components/home/navbar/NavbarAfterLogin';
-import Check from "../components/Cart/Checkout";
+import NavbarAfterLogin from '../components/module/home/navbar/NavbarAfterLogin';
+import Check from "../components/module/Cart/Checkout";
 const Checkout = () => {
   return (
     <div>

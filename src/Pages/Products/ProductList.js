@@ -1,10 +1,10 @@
 import React, { useState,useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../auth/style.css";
+import "../../components/module/profil/profil.css";
 import axios from "axios";
-import Profil from "../../components/profil/Profil";
-import Footer from "../../components/home/footer/Footer";
-import NavbarAfterLogin from "../../components/home/navbar/NavbarAfterLogin";
+import Profil from "../../components/module/profil/Profil";
+import Footer from "../../components/module/home/footer/Footer";
+import NavbarAfterLogin from "../../components/module/home/navbar/NavbarAfterLogin";
 const ProductList = () => {
     const [products, getProducts] = useState([]);
     const navigate = useNavigate()
@@ -36,7 +36,26 @@ const ProductList = () => {
     <div className="my-bag">
       <NavbarAfterLogin />
       <div className="row">
-        <Profil myProduct=" My Product" selling="Selling Product" />
+        <Profil>
+          <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 ms-5 small ">
+            <li>
+              <Link
+                to="/productlist"
+                className="link-dark d-inline-flex text-decoration-none rounded ms-3 mt-2"
+              >
+                myProduct
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/selling"
+                className="link-dark d-inline-flex text-decoration-none rounded ms-3 mt-3 text-secondary"
+              >
+                selling
+              </Link>
+            </li>
+          </ul>
+        </Profil>
         <div className="col-lg-7 profil-form">
           <div className="card mt-3">
             <div className="card-body">
@@ -46,9 +65,6 @@ const ProductList = () => {
               >
                 Back to home
               </button>
-              <Link to="/Selling" className="btn btn-success">
-                Add New
-              </Link>
               <div className="table-responsive mt-4">
                 <table className="table">
                   <thead className="table-dark">

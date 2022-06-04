@@ -1,11 +1,33 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Link } from "react-router-dom";
 import './style.css'
 import vektor from '../../assets/image/Vector.png'
 import blanja from '../../assets/image/Blanja.png'
 // import Style from '../auth/style.module.css'
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../../configs/redux/actions/userAction";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+   const navigate = useNavigate();
+   const dispatch = useDispatch();
+   const { isLoading } = useSelector((state) => state.user);
+   const [formLogin, setFormLogin] = useState({
+     email: "",
+     password: "",
+   });
+
+   const handleChange = (e) => {
+     setFormLogin({
+       ...formLogin,
+       [e.target.name]: e.target.value,
+     });
+   };
+
+   const handleLogin = (e) => {
+     e.preventDefault();
+     dispatch(loginUser(formLogin, navigate));
+   };
   return (
     <div>
       <div className="form-signin">
@@ -26,32 +48,37 @@ const Login = () => {
             </li>
           </ul>
         </div>
-        <form>
+        <form onSubmit={handleLogin}>
           <div className="form-floating">
             <input
               type="email"
+              name="email"
               className="form-control mb-3"
               placeholder="email"
+              value={formLogin.email}
+              onChange={handleChange}
             />
             <label htmlFor="floatingInput">Email address</label>
           </div>
           <div className="form-floating">
             <input
               type="password"
+              name="password"
               className="form-control mt-3"
               placeholder="Password"
+              value={formLogin.password}
+              onChange={handleChange}
             />
             <label htmlFor="floatingPassword">Password</label>
           </div>
           <div className="mb-4 mt-4 float-end">
             <label>Forgot password?</label>
           </div>
-          <Link to="/home">
-            <button className="w-100 btn btn-sign" type="button">
-              PRIMARY
-            </button>
-          </Link>
-          <label className="register mb-3 mt-4" htmlFor="">
+          {/* <button>{isLoading ? "loading.." : "Login"}</button> */}
+          <button className="w-100 btn btn-sign">
+            {isLoading ? "loading.." : "PRIMARY"}
+          </button>
+          <label className="register mb-3 mt-4" htmlFor="register">
             Don't have a Tokopedia account?
             <Link className="page-register" to="/register">
               Register

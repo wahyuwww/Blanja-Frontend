@@ -9,7 +9,7 @@ import axios from "axios";
 import Card from "../components/base/Card";
 const Home = () => {
   const [products, setProducts] = useState([]);
-  // const [searchItem, setSearch] = useState("");
+  const [searchItem, setSearch] = useState("");
   async function fetchData() {
     try {
       const result = await axios({
@@ -28,7 +28,7 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <Navbar  />
+      <Navbar onChange={(e) => setSearch(e.target.value)} />
       <Carausel />
       <Category />
       <div className="container">
@@ -39,6 +39,15 @@ const Home = () => {
           </div>
           <div className="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-3">
             {products
+              .filter((val) => {
+                if (searchItem === "") {
+                  return val;
+                } else if (
+                  val.name.toLowerCase().includes(searchItem.toLowerCase())
+                ) {
+                  return val;
+                }
+              })
               .map((item) => (
                 <div className="col" key={item.id}>
                   <Card

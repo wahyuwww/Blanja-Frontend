@@ -33,6 +33,9 @@
       "react-app/jest"
     ]
   },
+  "overrides": {
+    "autoprefixer": "10.4.5"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -44,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.9"
   }
 }

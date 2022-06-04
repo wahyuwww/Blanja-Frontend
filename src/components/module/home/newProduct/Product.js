@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import "../StyleHome.css";
 import axios from "axios";
 import Card from "../../../base/Card";
-// import Input from "../../../base/Input/Input"
+import Input from "../../../base/Input/Input"
 const Product = ({ title, subtitle }) => {
   
   const [products, setProducts] = useState([]); 
-  // const [searchItem, setSearch] = useState("");
+  const [searchItem, setSearch] = useState("");
    async function fetchData() {
      try {
        const result = await axios({
@@ -31,9 +31,18 @@ const Product = ({ title, subtitle }) => {
             <h3 className="title">{title}</h3>
             <p>{subtitle}</p>
           </div>
-          {/* <Input onChange={(e) => setSearch(e.target.value)} /> */}
+          <Input onChange={(e) => setSearch(e.target.value)} />
           <div className="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-3">
             {products
+              .filter((val) => {
+                if (searchItem === "") {
+                  return val;
+                } else if (
+                  val.name.toLowerCase().includes(searchItem.toLowerCase())
+                ) {
+                  return val;
+                }
+              })
               .map((item) => (
                 <div className="col" key={item.id}>
                   <Card

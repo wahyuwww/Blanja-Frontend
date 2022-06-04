@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
+import { useSelector } from "react-redux";
 const NavbarBase = ({onChange,onClick , src, srcFilter, srcCart }) => {
+  const { user } = useSelector((state) => state.user);
   return (
     <nav className="navbar navbar-expand-md navbar-light fixed-top mb-4">
       <div className="container">
@@ -41,6 +43,7 @@ const NavbarBase = ({onChange,onClick , src, srcFilter, srcCart }) => {
             <button className="btn btn-outline-light filter">
               <img src={srcFilter} alt="" />
             </button>
+            <h1>{user.email}</h1>
             {/* {search.map((item) => (
                 <p>{ item.name}</p>
               ))} */}

@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "../../components/module/home/footer/Footer";
 import NavbarAfterLogin from "../../components/module/home/navbar/NavbarAfterLogin";
 import Update from "../../components/module/ActionProduct/EditProduct";
-const CreateNew = () => {
+const UpdateProduct = () => {
   return (
     <div>
       <NavbarAfterLogin />
@@ -12,4 +12,4 @@ const CreateNew = () => {
   );
 };
 
-export default CreateNew;
+export default UpdateProduct;

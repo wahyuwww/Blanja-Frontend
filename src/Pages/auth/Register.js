@@ -1,39 +1,40 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import "./style.css";
 import vektor from "../../assets/image/Vector.png";
 import blanja from "../../assets/image/Blanja.png";
 // import Style from '../auth/style.module.css'
 // import PropTypes from "prop-types";
-import axios from "axios";
-
+// import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { signUp } from "../../configs/redux/actions/userAction";
 const Register = ({ label, ...props }) => {
    const navigate = useNavigate();
-   const [dataRegister, setDataRegister] = useState({
-     email: "",
-     password: "",
-     name: "",
-   });
-  const handleChange = (e) => {
-    setDataRegister({
-      ...dataRegister,
-      [e.target.name]: e.target.value,
-    });
-  };
-   const handleRegister = (e) => {
-     e.preventDefault();
-     axios
-       .post("http://localhost:4000/v1/auth/register", dataRegister)
-       .then((res) => {
-         console.log(res.data);
-         navigate("/login");
-       })
-       .catch((e) => {
-         // console.log(e);
-         // console.log(e.response.data.message);
-         alert(e.response.data.message);
-       });
+  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+       if (auth === user) {
+         alert("updsss");
+       }
+       console.log(user);
+   const handleChange = (e) => {
+     setUser({
+       ...user,
+       [e.target.name]: e.target.value,
+     });
    };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    dispatch(signUp(user, navigate));
+  };
+if (auth.id) return navigate("/login");
+
   return (
     <div>
       <div className="form-signin">
@@ -54,17 +55,17 @@ const Register = ({ label, ...props }) => {
             </li>
           </ul>
         </div>
-        <form onSubmit={handleRegister}>
+        <form onSubmit={handleLogin}>
           <div className="form-floating">
             <input
               id="floatingInput"
               name="name"
               type="text"
               {...props}
-              value={dataRegister.name}
+              value={user.name}
+              onChange={handleChange}
               placeholder="Name"
               className="form-control mb-3"
-              onChange={handleChange}
             />
             <label htmlFor="floatingInput">Name</label>
           </div>
@@ -74,7 +75,7 @@ const Register = ({ label, ...props }) => {
               name="email"
               type="email"
               {...props}
-              value={dataRegister.email}
+              value={user.email}
               className="form-control mb-3 "
               placeholder="Email Address"
               onChange={handleChange}
@@ -87,9 +88,9 @@ const Register = ({ label, ...props }) => {
               name="password"
               type="password"
               {...props}
-              value={dataRegister.password}
               className="form-control mt-3 "
               placeholder="Password"
+              value={user.password}
               onChange={handleChange}
             />
             <label htmlFor="floatingPassword">Password</label>

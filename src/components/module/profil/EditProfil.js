@@ -5,8 +5,9 @@ import Profil from './Profil'
 import home from "../../../assets/image/user-profil.png"
 import pekage from "../../../assets/image/map-pin (3) 1.png";
 import shoping from "../../../assets/image/clipboard 1 (1).png";
-
+import {useSelector} from "react-redux"
 const EditProfil = () => {
+   const { user } = useSelector((state) => state.auth);
   return (
     <div className="my-bag">
       <div className="row">
@@ -14,9 +15,9 @@ const EditProfil = () => {
           titleOne="My Account"
           titleTwo="Shipping Adrress"
           titleThere="My order"
-           imgOne= { home }
-  imgTwo={ pekage }
-  imgTheree={ shoping }
+          imgOne={home}
+          imgTwo={pekage}
+          imgTheree={shoping}
         />
         <div className="col-lg-7 profil-form">
           <div className="card mt-3">
@@ -39,7 +40,7 @@ const EditProfil = () => {
                       <input
                         type="text"
                         className="form-control"
-                        value="Johanes Mikael"
+                        value={user.name}
                       />
                     </div>
                   </div>
@@ -54,7 +55,7 @@ const EditProfil = () => {
                       <input
                         type="email"
                         className="form-control"
-                        value="johanes@gmail.com"
+                        value={user.email}
                       />
                     </div>
                   </div>
@@ -70,7 +71,7 @@ const EditProfil = () => {
                         type="number"
                         className="form-control"
                         id="inputPassword"
-                        value="08901289012"
+                        value=""
                       />
                     </div>
                   </div>
@@ -160,7 +161,11 @@ const EditProfil = () => {
                 <div className="col-sm-3 image-profil text-center">
                   <img src={avatar} className="rounded-circle" alt="" />
                   <div className="select-avatar mt-3">
-                    <button className="btn btn-select-profil">Select image</button>
+                    <div class="fileUpload btn btn-light btn-select-profil">
+                      <span>Choase File</span>
+                      <input type="file" class="upload" />
+                    </div>
+                    {/* <button >Select image</button> */}
                   </div>
                 </div>
               </div>

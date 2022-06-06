@@ -9,25 +9,25 @@ import { loginUser } from "../../configs/redux/actions/userAction";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-   const navigate = useNavigate();
-   const dispatch = useDispatch();
-   const { isLoading } = useSelector((state) => state.user);
-   const [formLogin, setFormLogin] = useState({
-     email: "",
-     password: "",
-   });
-
-   const handleChange = (e) => {
-     setFormLogin({
-       ...formLogin,
-       [e.target.name]: e.target.value,
+     const navigate = useNavigate();
+     const dispatch = useDispatch();
+     const { isLoading } = useSelector((state) => state.auth);
+     const [formLogin, setFormLogin] = useState({
+       email: "",
+       password: "",
      });
-   };
 
-   const handleLogin = (e) => {
-     e.preventDefault();
-     dispatch(loginUser(formLogin, navigate));
-   };
+     const handleChange = (e) => {
+       setFormLogin({
+         ...formLogin,
+         [e.target.name]: e.target.value,
+       });
+  };
+  console.log(formLogin.email)
+     const handleLogin = (e) => {
+       e.preventDefault();
+       dispatch(loginUser(formLogin, navigate));
+     };
   return (
     <div>
       <div className="form-signin">

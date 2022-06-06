@@ -1,28 +1,61 @@
 const initialState = {
     user: {
-        fullname: '',
+        name: '',
         email: '',
-        role: ''
+        role: '',
+        password : ''
     },
     isLoading: false
 }
 
-const userReducer = (state = initialState, action)=>{
+export const userReducer = (state = initialState, action) => {
 
-    if(action.type === 'USER_LOGIN_PENDING'){
-        return {
-            ...state,
-            isLoading: true
-        }
-    }else if(action.type === 'USER_LOGIN_SUCCESS'){
-        return{
-            ...state,
-            user: action.payload,
-            isLoading: false
-        }
-    }else{
-        return state
-    }
-}
-
-export default userReducer
+  switch (action.type) {
+    case "USER_LOGIN_PENDING":
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case "USER_LOGIN_SUCCESS":
+      return {
+        ...state,
+        user: action.payload,
+        isLoading: false,
+      };
+    case "USER_REGISTER_PENDING":
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case "USER_REGISTER_SUCCESS":
+      return {
+        ...state,
+        user: action.payload,
+        isLoading: false,
+      };
+    case "SIGN_OUT":
+      localStorage.removeItem("token");
+      return {
+        token: null,
+        name: null,
+        email: null,
+        _id: null,
+      };
+    default:
+      return state;
+  }
+};
+// export const signOut = (state = initialState, action) => {
+//   switch (action.type) {
+//     case "SIGN_OUT":
+//       localStorage.removeItem("token");
+//       return {
+//         token: null,
+//         name: null,
+//         email: null,
+//         _id: null,
+//       };
+//     default:
+//       return state;
+//   }
+// };

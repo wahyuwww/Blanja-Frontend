@@ -1,28 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import "../StyleHome.css";
 import axios from "axios";
 import Card from "../../../base/Card";
-import Input from "../../../base/Input/Input"
+import { useSearchParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setProducts } from "../../../../configs/redux/actions/productsActions";
+import Input from "../../../base/Input/Input";
+
+
 const Product = ({ title, subtitle }) => {
-  
-  const [products, setProducts] = useState([]); 
-  const [searchItem, setSearch] = useState("");
-   async function fetchData() {
-     try {
-       const result = await axios({
-         method: "GET",
-         baseURL: process.env.REACT_APP_API_BACKEND,
-         url: "/products/AllProduct",
-       });
-      //  console.log(result.data.data[0].image.split(',')[0]);
-       setProducts(result.data.data);
-     } catch (error) {
-       console.log(error);
-     }
-   }
-     useEffect(() => {
-       fetchData();
-     }, []);
+  const products = useSelector((state) => state.allProducts.products);
+  const dispatch = useDispatch();
+
+  const fetchProducts = async () => {
+    const response = await axios
+      .get(`${process.env.REACT_APP_API_BACKEND}/products/AllProduct`)
+      .catch((err) => {
+        console.log(err);
+      });
+    dispatch(setProducts(response.data.data));
+  };
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+ 
+
   return (
     <div>
       <div className="container">
@@ -31,29 +34,18 @@ const Product = ({ title, subtitle }) => {
             <h3 className="title">{title}</h3>
             <p>{subtitle}</p>
           </div>
-          <Input onChange={(e) => setSearch(e.target.value)} />
           <div className="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-3">
-            {products
-              .filter((val) => {
-                if (searchItem === "") {
-                  return val;
-                } else if (
-                  val.name.toLowerCase().includes(searchItem.toLowerCase())
-                ) {
-                  return val;
-                }
-              })
-              .map((item) => (
-                <div className="col" key={item.id}>
-                  <Card
-                    src={item.image.split(",")[0]}
-                    to={`/detail/${item.id}`}
-                    titleName={item.name}
-                    price={item.price}
-                    merk={item.merk}
-                  />
-                </div>
-              ))}
+            {products.map((item) => (
+              <div className="col" key={item.id}>
+                <Card
+                  src={item.image}
+                  to={`/detail/${item.id}`}
+                  titleName={item.name}
+                  price={item.price}
+                  merk={item.merk}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>

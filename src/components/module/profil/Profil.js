@@ -6,6 +6,7 @@ import vektor from "../../../assets/image/seling-product/Vector (2).png"
 import avatar from "../../../assets/image/edit-avatar.png"
 import pekage from "../../../assets/image/seling-product/package 1.png";
 import shoping from "../../../assets/image/seling-product/shopping-cart (3) 1.png";
+import { useSelector } from 'react-redux';
 
 const Profil = ({
   titleOne,
@@ -16,6 +17,7 @@ const Profil = ({
   imgTheree,
   children,
 }) => {
+  const {user} = useSelector((state)=>state.auth)
   return (
     <div className="col-lg-4 mt-2 select-profil">
       <div className="profil-avatar ">
@@ -25,7 +27,7 @@ const Profil = ({
               <img className="rounded-circle" src={profil} alt="img" />
             </td>
             <td className="align-middle float-start ms-3 image-text">
-              <p className="post mb-2">Johanes Mikael</p>
+              <p className="post mb-2">{user.name}</p>
               <p className=" edit-profil mt-2">
                 <img src={avatar} className="me-2" alt="" />
                 ubah profil

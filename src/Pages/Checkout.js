@@ -1,10 +1,10 @@
 import React from 'react'
-import NavbarAfterLogin from '../components/module/home/navbar/NavbarAfterLogin';
+import Navbar from "../components/module/home/navbar/Navbar";
 import Check from "../components/module/Cart/Checkout";
 const Checkout = () => {
   return (
     <div>
-      <NavbarAfterLogin />
+      <Navbar />
       <Check />
     </div>
   );

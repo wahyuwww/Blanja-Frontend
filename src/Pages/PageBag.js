@@ -1,11 +1,11 @@
 import React from 'react'
 import PageBage from "../components/module/Bag/Bag";
 import Footer from "../components/module/home/footer/Footer";
-import NavbarAfterLogin from "../components/module/home/navbar/NavbarAfterLogin";
+import Navbar from "../components/module/home/navbar/Navbar";
 const PageBag = () => {
   return (
     <div>
-      <NavbarAfterLogin />
+      <Navbar />
       <PageBage />
       <Footer />
     </div>

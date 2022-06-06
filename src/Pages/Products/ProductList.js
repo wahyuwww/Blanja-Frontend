@@ -5,8 +5,16 @@ import axios from "axios";
 import Profil from "../../components/module/profil/Profil";
 import Footer from "../../components/module/home/footer/Footer";
 import NavbarAfterLogin from "../../components/module/home/navbar/NavbarAfterLogin";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteProduct  } from "../../configs/redux/actions/productsActions";
+
+
+
 const ProductList = () => {
-    const [products, getProducts] = useState([]);
+  const [products, getProducts] = useState([]);
+    let product = useSelector((state) => state.delete);
+  const dispatch = useDispatch();
+  console.log(product);
     const navigate = useNavigate()
     async function fetchData() {
       try {
@@ -24,12 +32,15 @@ const ProductList = () => {
       fetchData();
     }, []);
 
-   const deleteCategory = (id) => {
-     axios.delete(`${process.env.REACT_APP_API_BACKEND}/products/${id}`).then(() => {
+   const deleteCategory = async (id) => {
+   await axios.delete(`${process.env.REACT_APP_API_BACKEND}/products/${id}`)
+       .then((res) => {
        alert("delete success");
-       fetchData();
+         fetchData();
+         dispatch(deleteProduct(res));
        // navigate('/product')
-     });
+         console.log(res);
+       });
    };
 
   return (

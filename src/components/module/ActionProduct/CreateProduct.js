@@ -6,6 +6,8 @@ import Profil from "../profil/Profil";
 import Input from "../../base/Input/Input"
 import deskripsi from "../../../assets/image/seling-product/summernote.png";
 
+import { useDispatch, useSelector } from "react-redux";
+import { createProduct } from "../../../configs/redux/actions/productsActions";
 const CreateProduct = () => {
     const navigate = useNavigate();
     const [image, setImage] = useState("https://fakeimg.pl/350x250/");
@@ -17,7 +19,10 @@ const CreateProduct = () => {
     const [typestock, setTypestock] = useState("");
     const [imagePreview, setImagePreview] = useState(
       "https://fakeimg.pl/350x250/"
-    );
+  );
+  const { isLoading } = useSelector((state) => state.Createproducts);
+    const dispatch = useDispatch();
+   
     const onSubmit = (e) => {
       const data = new FormData();
       data.append("name", name);
@@ -31,19 +36,19 @@ const CreateProduct = () => {
         axios.post(`${process.env.REACT_APP_API_BACKEND}/products/`, data, {
           'content-type': 'multipart/form-data'
         }).then(res => {
-            console.log('post success',res);
+            dispatch(createProduct(res));
              navigate("/productList");
         })
             .catch(err => {
-            console.log('err',err);
-        })
-    };
-
-    const onImageUpload = (e) => {
+            console.log(err);
+            })
+        // dispatch(createProduct(data));
+  };
+  const onImageUpload = (e) => {
         const file = e.target.files[0]
         setImage(file)
         setImagePreview(URL.createObjectURL(file))
-    }
+  }
   return (
     <form onSubmit={onSubmit}>
       <div className="my-bag">
@@ -296,7 +301,7 @@ const CreateProduct = () => {
             <div className="mt-3">
               <div className="col-sm-12 text-end">
                 <button className="btn btn-jual" type="submit">
-                  Jual
+                  {isLoading ? "Loading..." : "Jual"}
                 </button>
               </div>
             </div>

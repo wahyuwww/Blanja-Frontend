@@ -1,16 +1,16 @@
 import React from 'react'
 import Footer from '../components/module/home/footer/Footer'
-import NavbarAfterLogin from '../components/module/home/navbar/NavbarAfterLogin'
+import Navbar from "../components/module/home/navbar/Navbar";
 import EditProfil from '../components/module/profil/EditProfil'
 
 const Profil = () => {
   return (
-      <div>
-          <NavbarAfterLogin/>
-          <EditProfil/>
-          <Footer/>
+    <div>
+      <Navbar />
+      <EditProfil />
+      <Footer />
     </div>
-  )
+  );
 }
 
 export default Profil

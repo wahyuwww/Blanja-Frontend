@@ -4,12 +4,11 @@ import axios from "axios";
 import "./styleCreate.css";
 import Profil from "../profil/Profil";
 
+import { useDispatch, useSelector } from "react-redux";
+import { updateProduct } from "../../../configs/redux/actions/productsActions";
+
 const EditProduct = () => {
-    // const [name, setName] = useState('');
-    // const [stock, setStock] = useState('');
-    // const [price, setPrice] = useState('');
-    // const [description, setDeskripsion] = useState("");
-  
+
      const navigate = useNavigate();
      const [image, setImage] = useState("https://fakeimg.pl/350x200/");
      const [name, setName] = useState("");
@@ -20,7 +19,11 @@ const EditProduct = () => {
      const [merk, setMerk] = useState("");
      const [imagePreview, setImagePreview] = useState(
        "https://fakeimg.pl/350x200/"
-     );
+  );
+  
+    const product = useSelector((state) => state.product);
+    const dispatch = useDispatch();
+   
     const { id } = useParams();
       const onSubmit = (e) => {
       const data = new FormData();
@@ -37,16 +40,17 @@ const EditProduct = () => {
             "content-type": "multipart/form-data",
           })
           .then((res) => {
-            // console.log("post success", res);
+             dispatch(updateProduct(res));
             navigate("/productList");
           })
           .catch((err) => {
-            console.log("err", err);
+            console.log(err);
           });
+       
     };
     useEffect(() => {
         getProductById();
-    },);
+    },[]);
  
     const onImageUpload = (e) => {
       const file = e.target.files[0];

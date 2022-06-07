@@ -4,7 +4,7 @@ import axios from "axios";
 import "./styleCreate.css";
 import Profil from "../profil/Profil";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { updateProduct } from "../../../configs/redux/actions/productsActions";
 
 const EditProduct = () => {
@@ -21,7 +21,7 @@ const EditProduct = () => {
        "https://fakeimg.pl/350x200/"
   );
   
-    const product = useSelector((state) => state.product);
+    // const {isLoading} = useSelector((state) => state.update);
     const dispatch = useDispatch();
    
     const { id } = useParams();
@@ -50,6 +50,7 @@ const EditProduct = () => {
     };
     useEffect(() => {
         getProductById();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
  
     const onImageUpload = (e) => {

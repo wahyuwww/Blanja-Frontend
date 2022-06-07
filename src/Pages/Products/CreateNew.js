@@ -1,11 +1,11 @@
 import React from 'react'
 import Footer from '../../components/module/home/footer/Footer'
-import NavbarAfterLogin from '../../components/module/home/navbar/NavbarAfterLogin'
+import Navbar from '../../components/module/home/navbar/Navbar'
 import CreateProducts from "../../components/module/ActionProduct/CreateProduct";
 const CreateNew = () => {
   return (
       <div>
-          <NavbarAfterLogin/>
+          <Navbar/>
           <CreateProducts />
           <Footer/>
     </div>

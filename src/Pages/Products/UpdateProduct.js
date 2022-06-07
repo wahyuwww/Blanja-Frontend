@@ -1,11 +1,11 @@
 import React from "react";
 import Footer from "../../components/module/home/footer/Footer";
-import NavbarAfterLogin from "../../components/module/home/navbar/NavbarAfterLogin";
+import Navbar from "../../components/module/home/navbar/Navbar";
 import Update from "../../components/module/ActionProduct/EditProduct";
 const UpdateProduct = () => {
   return (
     <div>
-      <NavbarAfterLogin />
+      <Navbar/>
       <Update />
       <Footer />
     </div>

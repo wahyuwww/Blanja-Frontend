@@ -12,53 +12,39 @@ import axios from "axios";
 import {setProducts} from "../../../configs/redux/actions/productsActions"
 const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
   const { user } = useSelector((state) => state.auth);
-   const dispatch = useDispatch();
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   console.log(user);
   const handleSignOut = () => {
     dispatch(signOut());
   };
 
-const [search, setSearch] = useState([]);
-const [searchParams, setSearchParams] = useSearchParams([]);
-const handleSearch = () => {
-  setSearchParams({ search: search });
-};
-// const handleFilter = () => {
-//   setType({ type: 'DESC' });
-// };
-const getProducts = async () => {
-  axios
-    .get(
-      `${process.env.REACT_APP_API_BACKEND}/products/filter/?${searchParams}`
-    )
-    .then((res) => {
-      dispatch(setProducts(res.data.data));
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-// const getFilter = async () => {
-//   axios
-//     .get(
-//       `${process.env.REACT_APP_API_BACKEND}/products/filter/?${type}`
-//     )
-//     .then((res) => {
-//       dispatch(setProducts(res.data.data));
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };
-useEffect(() => {
-  getProducts();
-  // console.log(searchParams.get("search"));
-}, [searchParams]);
+  const [search, setSearch] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams([]);
+  const handleSearch = () => {
+    setSearchParams({ search: search });
+  };
+  const getProducts = async () => {
+    axios
+      .get(
+        `${process.env.REACT_APP_API_BACKEND}/products/filter/?${searchParams}`
+      )
+      .then((res) => {
+        console.log(res.data.data);
+        dispatch(setProducts(res.data.data));
+
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    getProducts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
 
   return (
@@ -67,17 +53,6 @@ useEffect(() => {
         <Link to="/home">
           <img src={src} alt="" className="" />
         </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarCollapse"
-          aria-controls="navbarCollapse"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
         <div className="collapse navbar-collapse ms-auto " id="navbarCollapse">
           <ul className="navbar-nav mb-2 mb-md-0 w-50 me-auto">
             <div className="input-group rounded nav-search">
@@ -131,20 +106,34 @@ useEffect(() => {
                 <img src={bell} alt="" className="icon-cart ms-3 mb-2" />
                 <img src={mail} alt="" className="icon-cart ms-3 mb-2" />
               </form>
-              <form className="d-flex float-right me-5 ms-5">
+              {/* <form className="d-flex float-right me-5 ms-5">
                 <Link to="/profil">
                   <img src={Profil} alt="" className="rounded-circle" />
                 </Link>
-              </form>
+              </form> */}
               <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  {user.name}
+                <Dropdown.Toggle variant="light" id="dropdown-basic">
+                  <img src={Profil} alt="" className="rounded-circle" />
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item>
+                    <p>hallu : {user.name}</p>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link to="/profil">
+                      <button
+                        className="btn btn-info "
+                        type="button"
+                      >
+                        {" "}
+                        profil
+                      </button>
+                    </Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
                     <Link to="/login">
                       <button
-                        className="btn btn-danger "
+                        className="btn btn-primary "
                         onClick={() => handleSignOut()}
                         type="button"
                       >

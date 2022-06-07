@@ -5,12 +5,16 @@ import {
   CreateproductsReducer,
   selectedProductsReducer,
   DeleteProductsReducer,
-  UpdateProductsReducer
+  UpdateProductsReducer,
+  productReducer,
+  dataProducts,
 } from "./productsReducer";
 const rootReducer = combineReducers({
   auth: userReducer,
   Createproducts: CreateproductsReducer,
   allProducts: productsReducer,
+  dataProduct: dataProducts,
+  products: productReducer,
   deleteProduct: DeleteProductsReducer,
   product: selectedProductsReducer,
   updateProduct: UpdateProductsReducer,

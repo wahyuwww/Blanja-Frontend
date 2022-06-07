@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { useSearchParams,Link } from "react-router-dom";
+import React from 'react'
+import { Link } from "react-router-dom";
 import "../StyleHome.css";
 // import styles from "../StyleHome.module.css";
 import NavbarBase from "../../../base/NavbarBase/Index"

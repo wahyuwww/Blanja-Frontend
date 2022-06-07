@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "../../Pages/Home";
 import Detail from "../../Pages/DetailProduct";
@@ -14,15 +14,11 @@ import CreateProduct from "../../Pages/Products/CreateNew";
 import Profil from "../../Pages/Profil";
 import Page404 from "../../Pages/Page404/Page404";
 import RequireAuth from '../../components/base/RequireAuth'
-import { loadUser } from "../../configs/redux/actions/userAction";
-import { useDispatch} from "react-redux"
+import MyProducts from '../../Pages/MyProducts';
+
 
 function Router() {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-      dispatch(loadUser());
-    }, [dispatch]);
+    
   return (
     <BrowserRouter>
       <Routes>
@@ -31,6 +27,7 @@ function Router() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/myProducts" element={<MyProducts />} />
         <Route
           path="/productList"
           element={

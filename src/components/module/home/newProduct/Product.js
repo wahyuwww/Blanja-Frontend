@@ -1,11 +1,10 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect} from "react";
 import "../StyleHome.css";
 import axios from "axios";
 import Card from "../../../base/Card";
-import { useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../../../../configs/redux/actions/productsActions";
-import Input from "../../../base/Input/Input";
+// import Input from "../../../base/Input/Input";
 
 
 const Product = ({ title, subtitle }) => {
@@ -22,6 +21,7 @@ const Product = ({ title, subtitle }) => {
   };
   useEffect(() => {
     fetchProducts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
  

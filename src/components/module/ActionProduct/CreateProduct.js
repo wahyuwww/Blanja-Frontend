@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate,Link } from "react-router-dom";
-import axios from "axios";
+import { Link } from "react-router-dom";
 import "./styleCreate.css";
 import Profil from "../profil/Profil";
 import Input from "../../base/Input/Input"
@@ -9,7 +8,7 @@ import deskripsi from "../../../assets/image/seling-product/summernote.png";
 import { useDispatch, useSelector } from "react-redux";
 import { createProduct } from "../../../configs/redux/actions/productsActions";
 const CreateProduct = () => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [image, setImage] = useState("https://fakeimg.pl/350x250/");
     const [name, setName] = useState('')
     const [description, setDeskripsion] = useState('')
@@ -33,15 +32,8 @@ const CreateProduct = () => {
       data.append("typestock", typestock);
       data.append("image", image);
         e.preventDefault();
-        axios.post(`${process.env.REACT_APP_API_BACKEND}/products/`, data, {
-          'content-type': 'multipart/form-data'
-        }).then(res => {
-            dispatch(createProduct(res));
-             navigate("/productList");
-        })
-            .catch(err => {
-            console.log(err);
-            })
+         dispatch(createProduct(data));
+        //  navigate("/productList");
         // dispatch(createProduct(data));
   };
   const onImageUpload = (e) => {

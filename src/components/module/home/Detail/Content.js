@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import "./StyleDetail.css";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
@@ -20,7 +20,7 @@ const Content = () => {
   //   "https://fakeimg.pl/350x200/"
   // );
   const { id } = useParams();
-  let product = useSelector((state) => state.product);
+  const product = useSelector((state) => state.product);
   const {
     name,
     price,
@@ -50,8 +50,9 @@ const Content = () => {
     dispatch(selectedProduct(response.data.data));
   };
   useEffect(() => {
-   fetchProductDetail()
-  });
+    fetchProductDetail();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   // const getProductById = async () => {
   //   const response = await axios.get(
   //     `${process.env.REACT_APP_API_BACKEND}/products/${id}`

@@ -4,7 +4,7 @@ import "../../components/module/profil/profil.css";
 import axios from "axios";
 import Profil from "../../components/module/profil/Profil";
 import Footer from "../../components/module/home/footer/Footer";
-import NavbarAfterLogin from "../../components/module/home/navbar/NavbarAfterLogin";
+import Navbar from "../../components/module/home/navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct  } from "../../configs/redux/actions/productsActions";
 
@@ -45,7 +45,7 @@ const ProductList = () => {
 
   return (
     <div className="my-bag">
-      <NavbarAfterLogin />
+      <Navbar />
       <div className="row">
         <Profil>
           <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 ms-5 small ">

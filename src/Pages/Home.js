@@ -1,4 +1,4 @@
-import React, {  useEffect,useState } from "react";
+import React, {  useEffect } from "react";
 import Navbar from "../components/module/home/navbar/Navbar";
 import Category from "../components/module/home/Category/Category";
 import Carausel from "../components/module/home/Caraousel/Carausel";
@@ -9,11 +9,9 @@ import axios from "axios";
 import Card from "../components/base/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../configs/redux/actions/productsActions";
-import { useSearchParams } from "react-router-dom";
 const Home = () => {
   const products = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch();
-    const auth = useSelector((state) => state.auth);
     const fetchProducts = async () => {
       const response = await axios
         .get(`${process.env.REACT_APP_API_BACKEND}/products/AllProduct`)
@@ -24,6 +22,7 @@ const Home = () => {
     };
     useEffect(() => {
       fetchProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
    
   // if (!auth.email) return <Navigate to="/login" />;
@@ -38,9 +37,6 @@ const Home = () => {
             <h3 className="title">New</h3>
             <p>What are you currently looking for</p>
           </div>
-
-       
-         
           <div className="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-3">
             {products.map((item) => (
               <div className="col" key={item.id}>

@@ -12,7 +12,7 @@ import { setProducts } from "../configs/redux/actions/productsActions";
 const Home = () => {
   const products = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch();
-    const fetchProducts = async () => {
+  const fetchProducts = async () => {
       const response = await axios
         .get(`${process.env.REACT_APP_API_BACKEND}/products/AllProduct`)
         .catch((err) => {

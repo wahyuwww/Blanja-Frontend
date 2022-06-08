@@ -1,13 +1,14 @@
-import React, {  useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./StyleDetail.css";
-import axios from "axios";
+// import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import retanggle from "../../../../assets/image/detail products/Rectangle 21.png";
 import shape from "../../../../assets/image/detail products/Shape (1).png";
-import {
-  selectedProduct,
-} from "../../../../configs/redux/actions/productsActions";
+// import {
+//   selectedProduct,
+// } from "../../../../configs/redux/actions/productsActions";
+import { cartAction } from "../../../../configs/redux/actions/cartAction";
 const Content = () => {
   //  const navigate = useNavigate();
   // const [name, setName] = useState("");
@@ -20,15 +21,8 @@ const Content = () => {
   //   "https://fakeimg.pl/350x200/"
   // );
   const { id } = useParams();
-  const product = useSelector((state) => state.product);
-  const {
-    name,
-    price,
-    typestock,
-    merk,
-    image,
-    description,
-  } = product;
+  // const product = useSelector((state) => state.product);
+
    const dispatch = useDispatch();
   // useEffect(() => {
   //   getProductById();
@@ -39,20 +33,30 @@ const Content = () => {
   //    setImage(file);
   //    setImagePreview(URL.createObjectURL(file));
   //  };
+  const { data } = useSelector((state) => state.carts);
+    const { name, price, typestock, merk, image, description } = data;
+  console.log(data)
+  const [bag,setBag] = useState()
+  console.log(bag);
+  const handleBag = () => {
+   dispatch(cartAction(id));
+   setBag('')
+  }
 
-  const fetchProductDetail = async () => {
-    const response = await axios
-      .get(`${process.env.REACT_APP_API_BACKEND}/products/${id}`)
-      .catch((err) => {
-        console.log( err);
-      });
-    // console.log(response.data.data);
-    dispatch(selectedProduct(response.data.data));
-  };
+  // const fetchProductDetail = async () => {
+  //   const response = await axios
+  //     .get(`${process.env.REACT_APP_API_BACKEND}/products/${id}`)
+  //     .catch((err) => {
+  //       console.log( err);
+  //     });
+  //   // console.log(response.data.data);
+  //   dispatch(selectedProduct(response.data.data));
+  // };
   useEffect(() => {
-    fetchProductDetail();
+    dispatch(cartAction(id));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   // const getProductById = async () => {
   //   const response = await axios.get(
   //     `${process.env.REACT_APP_API_BACKEND}/products/${id}`
@@ -67,7 +71,7 @@ const Content = () => {
   // };
   return (
     <div>
-      {Object.keys(product).length === 0 ? (
+      {Object.keys(data).length === 0 ? (
         <div className="loading">...Loading</div>
       ) : (
         <div className="container child-page">
@@ -152,7 +156,7 @@ const Content = () => {
                   <div className="d-flex btn-min btn">
                     <img src={retanggle} className="m-auto icon" alt="" />
                   </div>
-                  <p className="ms-2 me-2 mt-1 size"></p>
+                  <p className="ms-2 me-2 mt-1 size">10</p>
                   <div className="d-flex btn-max btn">
                     <img src={shape} className="m-auto icon" alt="" />
                   </div>
@@ -172,7 +176,7 @@ const Content = () => {
                   </div>
                   <div className="col-lg-4 ms-1">
                     <Link to="/Bag">
-                      <button className="btn btn-bag">Add bag</button>
+                      <button className="btn btn-bag" onClick={handleBag}>Add bag</button>
                     </Link>
                   </div>
                   <div className="col-lg-5 ms-1">

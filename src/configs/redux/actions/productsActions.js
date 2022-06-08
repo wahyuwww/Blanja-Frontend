@@ -34,7 +34,9 @@ export const getProduct = ({ page, limit, search, sort }) => async (dispacth) =>
 
 export const setDataProduct = (page,type) => (dispacth) => {
   axios
-    .get(`${process.env.REACT_APP_API_BACKEND}/products/sort/?page=${page}&type=${type}`)
+    .get(
+      `${process.env.REACT_APP_API_BACKEND}/products/sort/?page=${page}&type=${type}`
+    )
     .then((result) => {
       const response = result.data.data;
       dispacth({ type: ActionTypes.SET_PRODUCTS, payload: response });
@@ -58,6 +60,21 @@ export const updateProduct = (product) => {
     type: ActionTypes.UPDATE_PRODUCTS,
     payload: product,
   };
+};
+
+export const getDetail = (id) => async (dispatch) => {
+  dispatch({ type: "GET_PRODUCT_PENDING" });
+  const data = await axios
+    .get(`${process.env.REACT_APP_API_BACKEND}/products/${id}`)
+    .catch((err) => {
+      console.log(err);
+    });
+  console.log(data);
+  // return {
+  //     type: 'ADD_TODO',
+  //     payload: result
+  // }
+  dispatch({ type: ActionTypes.SELECTED_PRODUCT, payload: data });
 };
 
 // export const updateProduct = (updateProduct, id) => {

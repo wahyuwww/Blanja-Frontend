@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link,useSearchParams } from "react-router-dom";
+import { Link,useNavigate} from "react-router-dom";
 // import Buttons from "../Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../../configs/redux/actions/userAction";
@@ -8,14 +8,15 @@ import Profil from "../../../assets/image/profil.png";
 import bell from "../../../assets/image/bell (1) 1.png";
 import mail from "../../../assets/image/mail (3) 1.png";
 import { Dropdown,Button, Modal } from "react-bootstrap";
-import axios from "axios";
-import {setProducts} from "../../../configs/redux/actions/productsActions"
+// import axios from "axios";
+// import {setProducts} from "../../../configs/redux/actions/productsActions"
 const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const navigate = useNavigate()
 
   console.log(user);
   const handleSignOut = () => {
@@ -25,28 +26,32 @@ const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
   };
 
   const [search, setSearch] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams([]);
+  // const [searchParams, setSearchParams] = useSearchParams([]);
   const handleSearch = () => {
-    setSearchParams({ search: search });
+    // setSearchParams({ search: search });
+    navigate({
+      pathname: "/myProducts",
+      search: "?search=" + search,
+    });
   };
-  const getProducts = async () => {
-    axios
-      .get(
-        `${process.env.REACT_APP_API_BACKEND}/products/filter/?${searchParams}`
-      )
-      .then((res) => {
-        console.log(res.data.data);
-        dispatch(setProducts(res.data.data));
+  // const getProducts = async () => {
+  //   axios
+  //     .get(
+  //       `${process.env.REACT_APP_API_BACKEND}/products/filter/?${searchParams}`
+  //     )
+  //     .then((res) => {
+  //       console.log(res.data.data);
+  //       dispatch(setProducts(res.data.data));
 
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
   useEffect(() => {
-    getProducts();
+    // getProducts();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams]);
+  }, []);
 
 
   return (
@@ -103,7 +108,15 @@ const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
             <>
               <form className="ms-4">
                 <Link to="/Checkout">
-                  <img src={cart} alt="" className="icon-cart mb-2" />
+                  <button
+                    type="button"
+                    className="btn btn-link position-relative"
+                  >
+                    <img src={cart} alt="" className="icon-cart mb-2" />
+                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      1<span className="visually-hidden">unread messages</span>
+                    </span>
+                  </button>
                 </Link>
                 <img src={bell} alt="" className="icon-cart ms-3 mb-2" />
                 <img src={mail} alt="" className="icon-cart ms-3 mb-2" />

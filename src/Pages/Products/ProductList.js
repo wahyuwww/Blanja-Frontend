@@ -16,6 +16,7 @@ const ProductList = () => {
   const dispatch = useDispatch();
   console.log(product);
     const navigate = useNavigate()
+  console.log(navigate)
     async function fetchData() {
       try {
         const result = await axios({
@@ -70,15 +71,38 @@ const ProductList = () => {
         <div className="col-lg-7 profil-form">
           <div className="card mt-3">
             <div className="card-body">
-              <button
+              <h4 className="mb-3">My Products</h4>
+              {/* <button
                 onClick={() => navigate("/")}
                 className="btn btn-secondary me-5"
               >
                 Back to home
-              </button>
+              </button> */}
+              <div className="d-flex flex-row bd-highlight mb-3">
+                <div className="p-2 bd-highlight text-danger">all items</div>
+                <div className="p-2 bd-highlight">Sould out</div>
+                <div className="p-2 bd-highlight">Archived</div>
+                <hr />
+              </div>
+              <div className="input-group rounded nav-search w-25 mt-3">
+                <input
+                  type="search"
+                  className="form-control search-input"
+                  placeholder="Search"
+                  aria-label="Search"
+                  aria-describedby="search-addon"
+                  name="search"
+                />
+                <span
+                  className="input-group-text search bg-light"
+                  id="search-addon"
+                >
+                  <i className="bi bi-search"></i>
+                </span>
+              </div>
               <div className="table-responsive mt-4">
                 <table className="table">
-                  <thead className="table-dark">
+                  <thead className="table-light">
                     <tr>
                       <th>No</th>
                       <th>Title</th>

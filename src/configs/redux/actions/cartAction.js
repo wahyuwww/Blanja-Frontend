@@ -1,0 +1,35 @@
+import axios from "axios"
+import { ActionTypes } from "../constants/action-types";
+
+export const cartAction = (id) => async (dispatch) => {
+  dispatch({ type: "ADD_TODO_PENDING" });
+  const data = await axios
+    .get(`${process.env.REACT_APP_API_BACKEND}/products/${id}`)
+    .catch((err) => {
+      console.log(err);
+    });
+  console.log(data);
+  // return {
+  //     type: 'ADD_TODO',
+  //     payload: result
+  // }
+  dispatch({ type: ActionTypes.ADD_BAG, payload: data });
+};
+
+
+
+
+// export const cartAction = (nama, prices, images, ids) => async (dispatch) => {
+//   const data = {
+//     id: ids,
+//     nama: nama,
+//     price: prices,
+//     image: images,
+//   };
+//   console.log(data)
+//   try {
+//     dispatch({ type: "ADD_TO_CART", payload: data });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };

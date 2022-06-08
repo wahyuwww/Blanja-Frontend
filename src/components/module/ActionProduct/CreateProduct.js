@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createProduct } from "../../../configs/redux/actions/productsActions";
 const CreateProduct = () => {
     const navigate = useNavigate()
-    const [image, setImage] = useState("https://fakeimg.pl/350x250/");
+    const [image, setImage] = useState(["https://fakeimg.pl/350x250/"]);
     const [name, setName] = useState('')
     const [description, setDeskripsion] = useState('')
     const [stock, setStock] = useState('')
@@ -18,8 +18,9 @@ const CreateProduct = () => {
     const [price, setPrice] = useState('')
     const [typestock, setTypestock] = useState("");
     const [imagePreview, setImagePreview] = useState(
-      "https://fakeimg.pl/350x250/"
+      ["https://fakeimg.pl/350x250/"]
   );
+  console.log();
   const { isLoading } = useSelector((state) => state.Createproducts);
     const dispatch = useDispatch();
    
@@ -260,6 +261,7 @@ const CreateProduct = () => {
                   <hr className="upload" />
                   <div className="text-center mb-3">
                     <input
+                      multiple
                       onChange={(e) => onImageUpload(e)}
                       className="form-control btn btn-upload"
                       type="file"

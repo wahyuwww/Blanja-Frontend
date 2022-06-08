@@ -6,6 +6,8 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 const persistConfig = {
   key: "auth",
+  // eslint-disable-next-line no-dupe-keys
+  key:"refreshToken",
   storage: storage,
   whitelist: ["auth"], // which reducer want to store
 };

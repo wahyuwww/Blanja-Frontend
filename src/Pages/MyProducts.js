@@ -44,17 +44,17 @@ const MyProducts = () => {
           <div className="row row-cols-2 row-cols-sm-3 row-cols-md-5 mt-5">
             <Dropdown>
               <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                Sort type
+                Sorting Name
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item>
                   <button className="btn btn-info me-3" onClick={sortby}>
-                    sort DESC
+                    Name Z-A
                   </button>
                 </Dropdown.Item>
                 <Dropdown.Item>
                   <button className="btn btn-success" onClick={sortAsc}>
-                    sort ASC
+                    Name A-Z
                   </button>
                 </Dropdown.Item>
               </Dropdown.Menu>
@@ -77,7 +77,7 @@ const MyProducts = () => {
             <button className="btn btn-primary me-5" onClick={previos}>
               Previos
             </button>
-            <p className=' ms-5'>
+            <p className=" ms-5">
               {pagination.currentPage}/{pagination.totalPage}
             </p>
             <button className="btn btn-primary" onClick={next}>

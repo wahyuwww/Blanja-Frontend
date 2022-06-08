@@ -87,7 +87,7 @@ export const updateProduct = (product) => {
 //   );
 //   dispatch({ type: ActionTypes.CREATE_PRODUCTS, payload: result });
 // };
-export const createProduct = (data) => async (dispacth) => {
+export const createProduct = (data,navigate) => async (dispacth) => {
   try {
     dispacth({ type: ActionTypes.ADD_PRODUCTS_PENDING });
     const createdAt = await axios.post(
@@ -96,7 +96,8 @@ export const createProduct = (data) => async (dispacth) => {
       {
         "content-type": "multipart/form-data",
       }
-    );
+      );
+      navigate("/productlist")
     dispacth({ type: ActionTypes.CREATE_PRODUCTS, payload: createdAt });
   } catch (error) {
     dispacth({ type: ActionTypes.GET_PRODUCT_ERROR, payload: error.response });

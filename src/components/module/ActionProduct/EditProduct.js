@@ -19,7 +19,7 @@ const EditProduct = () => {
      const [merk, setMerk] = useState("");
      const [imagePreview, setImagePreview] = useState(
        "https://fakeimg.pl/350x200/"
-  );
+    );
   
     // const {isLoading} = useSelector((state) => state.update);
     const dispatch = useDispatch();

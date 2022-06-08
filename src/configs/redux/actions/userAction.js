@@ -50,7 +50,7 @@ export const signUp = (dataForm, navigate) => async (dispatch) => {
 export const signOut = () => {
   return (dispatch) => {
     dispatch({
-      type: "CLEAR_TODOS",
+      type: "CLEAR_PRODUCT",
     });
 
     dispatch({

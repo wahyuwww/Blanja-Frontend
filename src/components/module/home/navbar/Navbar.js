@@ -15,37 +15,11 @@ import { signOut } from "../../../../configs/redux/actions/userAction";
 
 
 const Navbar = ({ onChange }) => {
-  // const [search, setSearch] = useState([]);
-  // const [searchParams, setSearchParams] = useSearchParams([]);
-  // const handleSearch = () => {
-  //   setSearchParams({ search: search });
-  // };
-  //   const dispatch = useDispatch();
-  // const getProducts = async () => {
-  //   axios
-  //     .get(
-  //       `${process.env.REACT_APP_API_BACKEND}/products/filter/?${searchParams}`
-  //     )
-  //     .then((res) => {
-  //       setSearch(res.data.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-  // useEffect(() => {
-  //   getProducts();
-  //   // console.log(searchParams.get("search"));
-  // }, [searchParams]);
-
-  // console.log(search);
-  // // const searchItem ={
-  // //   search
-  // // }
 const { user } = useSelector((state) => state.auth);
 const dispatch = useDispatch();
 console.log(user);
-const handleSignOut = () => {
+  const handleSignOut = () => {
+   localStorage.removeItem("id");
   dispatch(signOut());
 };
   return (
@@ -57,7 +31,7 @@ const handleSignOut = () => {
         onChange={onChange}
       ></NavbarBase>
       <nav className="footer-nav bg-light text-center fixed-bottom">
-        {user.id ? (
+        {user?.id ? (
           <div className="content mt-2 mb-2">
             <button
               className="btn btn-light me-2"
@@ -66,7 +40,7 @@ const handleSignOut = () => {
             >
               <i className="bi bi-search"></i>
             </button>
-            <Link to="/checkout">
+            <Link to="/Checkout">
               <button className="btn btn-light me-2">
                 <img src={cart} alt="" className="icon-cart m-auto" />
               </button>

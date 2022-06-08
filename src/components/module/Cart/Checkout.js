@@ -5,7 +5,7 @@ import shape from "../../../assets/image/Shape.png";
 import Total from "../Total/Total";
 // import './cart.css'
 import "../home/StyleHome.css";
-
+// import Modal from "../../base/modal/Modal"
 export class Checkout extends Component {
   render() {
     return (
@@ -27,7 +27,8 @@ export class Checkout extends Component {
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
                 type="button"
-              >
+                >
+                  {/* <Modal/> */}
                 Choose another address
               </button>
             </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './edit.css'
 import avatar from "../../../assets/image/profil-avatar.png"
 import Profil from './Profil'
@@ -7,7 +7,13 @@ import pekage from "../../../assets/image/map-pin (3) 1.png";
 import shoping from "../../../assets/image/clipboard 1 (1).png";
 import {useSelector} from "react-redux"
 const EditProfil = () => {
-   const { user } = useSelector((state) => state.auth);
+    const { user } = useSelector((state) => state.auth);
+    const [imagePreview, setImagePreview] = useState(avatar);
+   const onImageUpload = (e) => {
+     const file = e.target.files[0];
+     setImagePreview(URL.createObjectURL(file));
+     console.log(URL.createObjectURL(file));
+   };
   return (
     <div className="my-bag">
       <div className="row">
@@ -159,11 +165,15 @@ const EditProfil = () => {
                   </div>
                 </div>
                 <div className="col-sm-3 image-profil text-center">
-                  <img src={avatar} className="rounded-circle" alt="" />
+                  <img src={imagePreview} className="rounded-circle" alt="" />
                   <div className="select-avatar mt-3">
                     <div class="fileUpload btn btn-light btn-select-profil">
                       <span>Choase File</span>
-                      <input type="file" class="upload" />
+                      <input
+                        type="file"
+                        class="upload"
+                        onChange={(e) => onImageUpload(e)}
+                      />
                     </div>
                     {/* <button >Select image</button> */}
                   </div>

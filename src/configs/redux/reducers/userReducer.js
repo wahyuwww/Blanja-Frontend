@@ -39,7 +39,7 @@ export const userReducer = (state = initialState, action) => {
         token: null,
         name: null,
         email: null,
-        _id: null,
+        id: null,
       };
     default:
       return state;

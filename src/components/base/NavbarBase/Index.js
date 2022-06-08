@@ -19,6 +19,8 @@ const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
 
   console.log(user);
   const handleSignOut = () => {
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("id");
     dispatch(signOut());
   };
 
@@ -97,10 +99,10 @@ const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
               </Modal.Body>
             </Modal>
           </ul>
-          {user.id ? (
+          {user?.id ? (
             <>
               <form className="ms-4">
-                <Link to="/checkout">
+                <Link to="/Checkout">
                   <img src={cart} alt="" className="icon-cart mb-2" />
                 </Link>
                 <img src={bell} alt="" className="icon-cart ms-3 mb-2" />
@@ -121,10 +123,7 @@ const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
                   </Dropdown.Item>
                   <Dropdown.Item>
                     <Link to="/profil">
-                      <button
-                        className="btn btn-info "
-                        type="button"
-                      >
+                      <button className="btn btn-info " type="button">
                         {" "}
                         profil
                       </button>

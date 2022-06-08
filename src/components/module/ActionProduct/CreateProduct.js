@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./styleCreate.css";
 import Profil from "../profil/Profil";
+import { useNavigate } from "react-router-dom";
 import Input from "../../base/Input/Input"
 import deskripsi from "../../../assets/image/seling-product/summernote.png";
 
 import { useDispatch, useSelector } from "react-redux";
 import { createProduct } from "../../../configs/redux/actions/productsActions";
 const CreateProduct = () => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate()
     const [image, setImage] = useState("https://fakeimg.pl/350x250/");
     const [name, setName] = useState('')
     const [description, setDeskripsion] = useState('')
@@ -32,7 +33,7 @@ const CreateProduct = () => {
       data.append("typestock", typestock);
       data.append("image", image);
         e.preventDefault();
-         dispatch(createProduct(data));
+         dispatch(createProduct(data, navigate));
         //  navigate("/productList");
         // dispatch(createProduct(data));
   };

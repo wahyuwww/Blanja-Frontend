@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import '../home/StyleHome.css'
 // import bag from '../../../assets/image/bag.png'
 import Rectangle from '../../../assets/image/Rectangle 605.png'
@@ -10,26 +10,27 @@ import {cartAction}  from "../../../configs/redux/actions/cartAction"
 // import axios from "axios"
 
 const Bag = () => {
+
+  const [count, setCount] = useState(1); 
+  const handleSum = () => {
+    setCount(count+1)
+  }
+  const handleMin = () => {
+    setCount(count-1)
+  }
    
+
   // eslint-disable-next-line no-unused-vars
   const { products } = useSelector((state) => state.allProducts);
   const { data } = useSelector((state) => state.carts);
+
   let { name, price, merk, image } = data;
   const dispatch = useDispatch();
      console.log(data);
      const handleBag = () => {
        dispatch(cartAction());
      };
-  // const fetchProducts = async () => {
-  //     const response = await axios
-  //       .get(`${process.env.REACT_APP_API_BACKEND}/products/`)
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //     dispatch(setProducts(response.data.data));
-  //   };
       useEffect(() => {
-      //  fetchProducts()
        handleBag()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
@@ -67,7 +68,7 @@ const Bag = () => {
             </div>
           </div>
           {Object.keys(data).length === 0 ? (
-            <div className="loading">...Loading</div>
+            <h1>Sorry Data Empty</h1>
           ) : (
             <div className="card mb-3 ">
               <div className="table-responsive-sm">
@@ -88,41 +89,41 @@ const Bag = () => {
                       </div>
                     </td>
                     <td className="align-middle  float-start">
-                      <img
-                        className="img-products"
-                        src={image}
-                        alt="product"
-                      />
+                      <img className="img-products" src={image} alt="product" />
                     </td>
                     <td className="align-middle float-start">
                       <p className="post mb-1">{name}</p>
-                      <span className="text-secondary sub-post">
-                        {merk}
-                      </span>
+                      <span className="text-secondary sub-post">{merk}</span>
                     </td>
                     <td className="align-middle">
                       <tr>
-                        <button className="btn btn-secondary min">
+                        <button
+                          className="btn btn-secondary min"
+                          onClick={handleMin}
+                        >
                           <img src={Rectangle} alt="" className="icon-min" />
                         </button>
                       </tr>
                     </td>
-                    <td className="align-middle one">1</td>
+                    <td className="align-middle one">{count}</td>
                     <td className="align-middle">
                       <tr>
-                        <button className="btn btn-light max">
+                        <button
+                          className="btn btn-light max"
+                          onClick={handleSum}
+                        >
                           <img src={shape} alt="" className="icon-max" />
                         </button>
                       </tr>
                     </td>
-                    <td className="align-middle price">{price}</td>
+                    <td className="align-middle price">{price * count}</td>
                   </tbody>
                 </table>
               </div>
             </div>
           )}
         </div>
-        <Total totalPrice="Total Price" />
+        <Total totalPrice="Total Price" priceBag={price * count} />
       </div>
     </div>
   );

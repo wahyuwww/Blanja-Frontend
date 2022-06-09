@@ -9,27 +9,6 @@ export const cartAction = (id) => async (dispatch) => {
       console.log(err);
     });
   console.log(data);
-  // return {
-  //     type: 'ADD_TODO',
-  //     payload: result
-  // }
   dispatch({ type: ActionTypes.ADD_BAG, payload: data });
 };
 
-
-
-
-// export const cartAction = (nama, prices, images, ids) => async (dispatch) => {
-//   const data = {
-//     id: ids,
-//     nama: nama,
-//     price: prices,
-//     image: images,
-//   };
-//   console.log(data)
-//   try {
-//     dispatch({ type: "ADD_TO_CART", payload: data });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };

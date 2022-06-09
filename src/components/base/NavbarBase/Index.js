@@ -127,7 +127,7 @@ const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
                 </Link>
               </form> */}
               <Dropdown>
-                <Dropdown.Toggle variant="light" id="dropdown-basic">
+                <Dropdown.Toggle variant="link" id="dropdown-basic">
                   <img src={Profil} alt="" className="rounded-circle" />
                 </Dropdown.Toggle>
                 <Dropdown.Menu>

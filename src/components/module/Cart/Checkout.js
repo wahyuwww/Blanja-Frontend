@@ -23,10 +23,7 @@ export class Checkout extends Component {
                 16] Sokaraja, Kab. Banyumas, 53181
               </p>
               <button
-                className=" btn btn-address"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-                type="button"
+                className=" btn btn-address" 
                 >
                   {/* <Modal/> */}
                 Choose another address

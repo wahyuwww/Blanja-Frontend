@@ -36,11 +36,11 @@ const EditProduct = () => {
       data.append("merk", merk);
         e.preventDefault();
         axios
-          .put(`http://localhost:4000/v1/products/${id}`, data, {
+          .put(`${process.env.REACT_APP_API_BACKEND}/products/${id}`, data, {
             "content-type": "multipart/form-data",
           })
           .then((res) => {
-             dispatch(updateProduct(res));
+            dispatch(updateProduct(res));
             navigate("/productList");
           })
           .catch((err) => {

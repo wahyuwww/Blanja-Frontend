@@ -7,7 +7,7 @@ export const loginUser = (dataForm, navigate)=> async(dispatch)=>{
     try {
         dispatch({type: 'USER_LOGIN_PENDING'})
         const result = await axios.post(
-          "http://localhost:4000/v1/auth/login",
+          `${process.env.REACT_APP_API_BACKEND}/auth/login`,
           dataForm
         );
       const user = result.data.data
@@ -33,7 +33,7 @@ export const signUp = (dataForm, navigate) => async (dispatch) => {
   try {
     dispatch({ type: "USER_REGISTER_PENDING" });
     const result = await axios.post(
-      "http://localhost:4000/v1/auth/register",
+      `${process.env.REACT_APP_API_BACKEND}/auth/register`,
       dataForm
     );
     const user = result.data.data;

@@ -59,6 +59,7 @@ const getProducts = async () => {
   useEffect(() => {
     dispatch(setDataProduct(counter, sort));
     getProducts();
+    searchParams.get("search");
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counter, sort, dispatch, searchParams]);
 

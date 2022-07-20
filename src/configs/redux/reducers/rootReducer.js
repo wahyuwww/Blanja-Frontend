@@ -9,7 +9,8 @@ import {
   productReducer,
   dataProducts,
 } from "./productsReducer";
-import { cartReducer } from "./cartReducer";
+import { cartReducer, todosReducer } from "./cartReducer";
+import { categoryReducer } from "./categoryReducer";
 const rootReducer = combineReducers({
   auth: userReducer,
   Createproducts: CreateproductsReducer,
@@ -17,9 +18,11 @@ const rootReducer = combineReducers({
   dataProduct: dataProducts,
   products: productReducer,
   carts: cartReducer,
+  todo: todosReducer,
   deleteProduct: DeleteProductsReducer,
   product: selectedProductsReducer,
   updateProduct: UpdateProductsReducer,
+  getCategory: categoryReducer,
 });
 
 export default rootReducer

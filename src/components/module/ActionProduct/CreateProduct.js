@@ -5,7 +5,7 @@ import Profil from "../profil/Profil";
 import { useNavigate } from "react-router-dom";
 import Input from "../../base/Input/Input"
 import deskripsi from "../../../assets/image/seling-product/summernote.png";
-
+import { Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { createProduct } from "../../../configs/redux/actions/productsActions";
 const CreateProduct = () => {
@@ -17,6 +17,7 @@ const CreateProduct = () => {
     const [merk, setMerk] = useState("");
     const [price, setPrice] = useState('')
     const [typestock, setTypestock] = useState("");
+    const [idcategory, setCategory] = useState("");
     const [imagePreview, setImagePreview] = useState(
       ["https://fakeimg.pl/350x250/"]
   );
@@ -33,6 +34,7 @@ const CreateProduct = () => {
       data.append("price", price);
       data.append("typestock", typestock);
       data.append("image", image);
+      data.append("idcategory", idcategory);
         e.preventDefault();
          dispatch(createProduct(data, navigate));
         //  navigate("/productList");
@@ -128,6 +130,34 @@ const CreateProduct = () => {
                         onChange={(e) => setMerk(e.target.value)}
                         className="form-control form-control-lg ms-2 mt-2 name-input"
                       />
+                    </div>
+                    <div className="mb-3 row">
+                      <label
+                        htmlFor="Merk"
+                        className=" col-form-label text-secondary"
+                      >
+                        Unit Merk
+                      </label>
+                      <Form.Select
+                        aria-label="Default select example ms-5"
+                        onChange={(e) => setCategory(e.target.value)}
+                      >
+                        <option>Pilih kategori</option>
+                        <option value="2">pakaian</option>
+                        <option value="3">makanan</option>
+                        <option value="4">tecnolgi</option>
+                        <option value="5">celana</option>
+                        <option
+                          value="6"
+                        >
+                          tas
+                        </option>
+                        <option
+                          value="1"
+                        >
+                          Minuman
+                        </option>
+                      </Form.Select>
                     </div>
                   </div>
                   <div className="col-sm-8">

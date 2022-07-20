@@ -8,7 +8,10 @@ import shape from "../../../../assets/image/detail products/Shape (1).png";
 // import {
 //   selectedProduct,
 // } from "../../../../configs/redux/actions/productsActions";
-import { cartAction } from "../../../../configs/redux/actions/cartAction";
+import {
+  cartAction,
+  addTodolist,
+} from "../../../../configs/redux/actions/cartAction";
 const Content = () => {
   //  const navigate = useNavigate();
   // const [name, setName] = useState("");
@@ -34,14 +37,14 @@ const Content = () => {
   //    setImagePreview(URL.createObjectURL(file));
   //  };
   const { data } = useSelector((state) => state.carts);
-    const { name, price, typestock, merk, image, description } = data;
+  const { name, price, typestock, merk, image, description } = data;
   console.log(data)
-  const [bag,setBag] = useState()
-  console.log(bag);
-  const handleBag = () => {
-   dispatch(cartAction(id));
-   setBag('')
-  }
+  //  const [todo, setTodo] = useState("");
+  
+   const handleBag = () => {
+     dispatch(addTodolist(data));
+    //  setTodo("");
+   };
 
   // const fetchProductDetail = async () => {
   //   const response = await axios

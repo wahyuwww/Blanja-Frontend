@@ -1,13 +1,14 @@
-import React,{useEffect, useState} from 'react'
+import React,{ useState} from 'react'
 import '../home/StyleHome.css'
 // import bag from '../../../assets/image/bag.png'
 import Rectangle from '../../../assets/image/Rectangle 605.png'
 import shape from '../../../assets/image/Shape.png'
 import Total from '../Total/Total'
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 // import { setProducts } from "../../../configs/redux/actions/productsActions";
-import {cartAction}  from "../../../configs/redux/actions/cartAction"
+// import { addTodolist } from "../../../configs/redux/actions/cartAction";
 // import axios from "axios"
+
 
 const Bag = () => {
 
@@ -18,22 +19,10 @@ const Bag = () => {
   const handleMin = () => {
     setCount(count-1)
   }
-   
-
-  // eslint-disable-next-line no-unused-vars
-  const { products } = useSelector((state) => state.allProducts);
-  const { data } = useSelector((state) => state.carts);
-
-  let { name, price, merk, image } = data;
-  const dispatch = useDispatch();
-     console.log(data);
-     const handleBag = () => {
-       dispatch(cartAction());
-     };
-      useEffect(() => {
-       handleBag()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
+  const { data } = useSelector((state) => state.todo);
+ let result = data.reduce(function (tot, arr) {
+   return (tot + arr.data.price)*count;
+ }, 0);
   return (
     <div className="container bag-my">
       <h3 className="title-bag">My Bag</h3>
@@ -49,7 +38,7 @@ const Bag = () => {
                         <p className="select-item ms-4">
                           Select all items{" "}
                           <span className="text-secondary">
-                            (2 items selected)
+                            ({ data.length} items selected)
                           </span>{" "}
                         </p>
                         <input
@@ -67,63 +56,78 @@ const Bag = () => {
               </table>
             </div>
           </div>
-          {Object.keys(data).length === 0 ? (
-            <h1>Sorry Data Empty</h1>
-          ) : (
-            <div className="card mb-3 ">
-              <div className="table-responsive-sm">
-                <table className="table">
-                  <tbody>
-                    <td className="align-middle">
-                      <div className="check ms-2 mt-2">
-                        <label className="customcheck mt-2 input">
-                          /
-                          <input
-                            className="form-check-input "
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault"
+          {data.length > 0 && (
+            <ul>
+              {data.map((item, index) => (
+                <div className="card mb-3 " key={index}>
+                  <div className="table-responsive-sm">
+                    <table className="table">
+                      <tbody>
+                        <td className="align-middle">
+                          <div className="check ms-2 mt-2">
+                            <label className="customcheck mt-2 input">
+                              /
+                              <input
+                                className="form-check-input "
+                                type="checkbox"
+                                value=""
+                                id="flexCheckDefault"
+                              />
+                              <span className="checkmark"></span>
+                            </label>
+                          </div>
+                        </td>
+                        <td className="align-middle  float-start">
+                          <img
+                            className="img-products"
+                            src={item.data.image}
+                            alt="product"
                           />
-                          <span className="checkmark"></span>
-                        </label>
-                      </div>
-                    </td>
-                    <td className="align-middle  float-start">
-                      <img className="img-products" src={image} alt="product" />
-                    </td>
-                    <td className="align-middle float-start">
-                      <p className="post mb-1">{name}</p>
-                      <span className="text-secondary sub-post">{merk}</span>
-                    </td>
-                    <td className="align-middle">
-                      <tr>
-                        <button
-                          className="btn btn-secondary min"
-                          onClick={handleMin}
-                        >
-                          <img src={Rectangle} alt="" className="icon-min" />
-                        </button>
-                      </tr>
-                    </td>
-                    <td className="align-middle one">{count}</td>
-                    <td className="align-middle">
-                      <tr>
-                        <button
-                          className="btn btn-light max"
-                          onClick={handleSum}
-                        >
-                          <img src={shape} alt="" className="icon-max" />
-                        </button>
-                      </tr>
-                    </td>
-                    <td className="align-middle price">{price * count}</td>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+                        </td>
+                        <td className="align-middle float-start">
+                          <p className="post mb-1">{item.data.name}</p>
+                          <span className="text-secondary sub-post">
+                            {item.data.merk}
+                          </span>
+                        </td>
+                        <td className="align-middle">
+                          <tr>
+                            <button
+                              className="btn btn-secondary min"
+                              onClick={handleMin}
+                            >
+                              <img
+                                src={Rectangle}
+                                alt=""
+                                className="icon-min"
+                              />
+                            </button>
+                          </tr>
+                        </td>
+                        <td className="align-middle one">{count}</td>
+                        <td className="align-middle">
+                          <tr>
+                            <button
+                              className="btn btn-light max"
+                              onClick={handleSum}
+                            >
+                              <img src={shape} alt="" className="icon-max" />
+                            </button>
+                          </tr>
+                        </td>
+                        <td className="align-middle price">
+                          {item.data.price * count}
+                        </td>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              ))}
+            </ul>
           )}
+          {data.length < 1 && <h1>Sorry Data Empty</h1>}
         </div>
-        <Total totalPrice="Total Price" priceBag={price * count} />
+        <Total totalPrice="Total Price" priceBag={result} />
       </div>
     </div>
   );

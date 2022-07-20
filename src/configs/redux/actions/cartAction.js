@@ -12,3 +12,10 @@ export const cartAction = (id) => async (dispatch) => {
   dispatch({ type: ActionTypes.ADD_BAG, payload: data });
 };
 
+export const addTodolist = (data) => async (dispatch) => {
+  dispatch({ type: "ADD_TODO_PENDING" });
+  const result = {
+    data,
+  };
+  dispatch({ type: "ADD_TODO_SUCCESS", payload: result });
+};

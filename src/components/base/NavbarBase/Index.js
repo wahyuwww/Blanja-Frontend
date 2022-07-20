@@ -17,7 +17,7 @@ const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const navigate = useNavigate()
-
+  const { data } = useSelector((state) => state.todo);
   console.log(user);
   const handleSignOut = () => {
     localStorage.removeItem("refreshToken");
@@ -109,12 +109,15 @@ const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
               <form className="ms-4">
                 <Link to="/Checkout">
                   <button
-                    type="button"
                     className="btn btn-link position-relative"
+                    style={{
+                      width: 40,
+                      height: 40,
+                    }}
                   >
                     <img src={cart} alt="" className="icon-cart mb-2" />
                     <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      1<span className="visually-hidden">unread messages</span>
+                      {data.length}
                     </span>
                   </button>
                 </Link>

@@ -11,7 +11,7 @@ import { getCategory} from "../../../../configs/redux/actions/categoryAction"
 
 const Category = () => {
   const {category}  = useSelector((state) => state.getCategory);
-  console.log(category[0].name);
+  console.log(category);
    const dispatch = useDispatch();
    useEffect(() => {
       dispatch(getCategory());
@@ -30,7 +30,7 @@ const Category = () => {
                   <img src={hiclipart1} alt="Bootstrap" className="img-fluid" />
                   <div className="card-img-overlay text-white d-flex justify-content-center align-items-center">
                     <a href="/category/{category[0].id}" >
-                    <p className="font-category">{category[0].name}</p>
+                    <p className="font-category"></p>
                     </a>
                   </div>
                 </div>
@@ -41,7 +41,7 @@ const Category = () => {
                 <div className="card-body m-2">
                   <img src={hiclipart2} alt="Bootstrap" className="img-fluid" />
                   <div className="card-img-overlay text-white d-flex justify-content-center align-items-center">
-                    <p className="font-category">{category[1].name}</p>
+                    <p className="font-category"></p>
                   </div>
                 </div>
               </div>
@@ -51,7 +51,7 @@ const Category = () => {
                 <div className="card-body m-2">
                   <img src={hiclipart3} alt="Bootstrap" className="img-fluid" />
                   <div className="card-img-overlay text-white d-flex justify-content-center align-items-center">
-                    <p className="font-category">{category[2].name}</p>
+                    <p className="font-category"></p>
                   </div>
                 </div>
               </div>
@@ -61,7 +61,7 @@ const Category = () => {
                 <div className="card-body m-2">
                   <img src={hiclipart4} alt="Bootstrap" className="img-fluid" />
                   <div className="card-img-overlay text-white d-flex justify-content-center align-items-center">
-                    <p className="font-category">{category[3].name}</p>
+                    <p className="font-category"></p>
                   </div>
                 </div>
               </div>
@@ -71,7 +71,7 @@ const Category = () => {
                 <div className="card-body m-2">
                   <img src={hiclipart5} alt="Bootstrap" className="img-fluid" />
                   <div className="card-img-overlay text-white d-flex justify-content-center align-items-center">
-                    <p className="font-category">{category[4].name}</p>
+                    <p className="font-category"></p>
                   </div>
                 </div>
               </div>

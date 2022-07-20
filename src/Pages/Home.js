@@ -12,12 +12,14 @@ import { setProducts } from "../configs/redux/actions/productsActions";
 const Home = () => {
   const products = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch();
+  console.log(products)
   const fetchProducts = async () => {
       const response = await axios
         .get(`${process.env.REACT_APP_API_BACKEND}/products/AllProduct`)
         .catch((err) => {
           console.log(err);
         });
+    console.log(response);
       dispatch(setProducts(response.data.data));
     };
     useEffect(() => {

@@ -167,11 +167,11 @@ const EditProfil = () => {
                 <div className="col-sm-3 image-profil text-center">
                   <img src={imagePreview} className="rounded-circle" alt="" />
                   <div className="select-avatar mt-3">
-                    <div class="fileUpload btn btn-light btn-select-profil">
+                    <div className="fileUpload btn btn-light btn-select-profil">
                       <span>Choase File</span>
                       <input
                         type="file"
-                        class="upload"
+                        className="upload"
                         onChange={(e) => onImageUpload(e)}
                       />
                     </div>

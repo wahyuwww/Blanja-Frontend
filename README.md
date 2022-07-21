@@ -51,6 +51,7 @@
     <li><a href="#screenshoots">Screenshots</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#related-project">Related Project</a></li>
+    <li><a href="#contact">Contact</a></li>
     <li><a href="#license">License</a></li>
   </ol>
 </details>
@@ -134,7 +135,7 @@ REACT_APP_API_BACKEND = [API_URL]
   </tr>
   
   <tr>
-    <td><image src="./screenshoot/Home.png" alt="Home Page" ></td>
+    <td><image src="./screenshoot/Home.png" alt="Home Page" width="400px" ></td>
     <td><image src="./screenshoot/detail.png" alt="Detail Product Page" width=100%/></td>
   </tr>
   <tr>

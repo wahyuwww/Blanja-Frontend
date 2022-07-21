@@ -1,6 +1,8 @@
 import axios from 'axios'
 // import { ActionTypes } from "../constants/action-types";
 import swal from "sweetalert2"
+import { ActionTypes } from "../constants/action-types";
+
 
 
 export const loginUser = (dataForm, navigate)=> async(dispatch)=>{
@@ -76,6 +78,13 @@ export const signOut = () => {
     dispatch({
       type: "SIGN_OUT",
     });
+  };
+};
+
+export const updateUser = (users) => {
+  return {
+    type: ActionTypes.UPDATE_USER,
+    payload: users,
   };
 };
 

@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useEffect} from 'react'
 import "../StyleHome.css";
-import product from "../../../../assets/image/product.png";
-import Card from '../../../base/Card/index'
+// import product from "../../../../assets/image/product.png";
+import axios from "axios";
+import Card from "../../../base/Card";
+import { useDispatch, useSelector } from "react-redux";
+import { FormatRupiah } from "@arismun/format-rupiah";
+import { setProducts } from "../../../../configs/redux/actions/productsActions";
 
 function Populer() {
+   const products = useSelector((state) => state.allProducts.products);
+   const dispatch = useDispatch();
+
+   const fetchProducts = async () => {
+     const response = await axios
+       .get(`${process.env.REACT_APP_API_BACKEND}/products/AllProduct`)
+       .catch((err) => {
+         console.log(err);
+       });
+     dispatch(setProducts(response.data.data));
+   };
+   useEffect(() => {
+     fetchProducts();
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, []);
   return (
     <div>
       <div className="container">
@@ -13,51 +32,17 @@ function Populer() {
             <p>Find clothes that are trending recently</p>
           </div>
           <div className="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-3">
-            <div className="col">
-              <Card
-                src={product}
-                to={`/home`}
-                titleName="Men's formal suit - Black & White"
-                price="$ 40 . 0"
-                merk="Zalora Cloath"
-              ></Card>
-            </div>
-            <div className="col">
-              <Card
-                src={product}
-                to={`/home`}
-                titleName="Men's formal suit - Black & White"
-                price="$ 40 . 0"
-                merk="Zalora Cloath"
-              ></Card>
-            </div>
-            <div className="col">
-              <Card
-                src={product}
-                to={`/home`}
-                titleName="Men's formal suit - Black & White"
-                price="$ 40 . 0"
-                merk="Zalora Cloath"
-              ></Card>
-            </div>
-            <div className="col">
-              <Card
-                src={product}
-                to={`/home`}
-                titleName="Men's formal suit - Black & White"
-                price="$ 40 . 0"
-                merk="Zalora Cloath"
-              ></Card>
-            </div>
-            <div className="col">
-              <Card
-                src={product}
-                to={`/home`}
-                titleName="Men's formal suit - Black & White"
-                price="$ 40 . 0"
-                merk="Zalora Cloath"
-              ></Card>
-            </div>
+            {products.map((item) => (
+              <div className="col" key={item.id}>
+                <Card
+                  src={item.image}
+                  to={`/detail/${item.id}`}
+                  titleName={item.name}
+                  price={<FormatRupiah value={item.price} />}
+                  merk={item.merk}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@ import bell from "../../../assets/image/bell (1) 1.png";
 import mail from "../../../assets/image/mail (3) 1.png";
 import { Dropdown, Button, Modal } from "react-bootstrap";
 import swal from "sweetalert2";
+import axios from "axios";
 // import axios from "axios";
 // import {setProducts} from "../../../configs/redux/actions/productsActions"
 const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
@@ -55,10 +56,28 @@ const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
   // };
   useEffect(() => {
     // getProducts();
+    datas()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+ const [date_of_brith, setDate_of_brith] = useState("");
+ useEffect(() => {
+   datas();
+ }, []);
 
+ const datas = async () => {
+   const token = localStorage.getItem("token");
+   const response = await axios.get(
+     `${process.env.REACT_APP_API_BACKEND}/auth/profile`,
+     {
+       headers: {
+         Authorization: `Bearer ${token}`,
+       },
+     }
+   );
+   console.log(response.data.data.username);
+   setDate_of_brith(response.data.data[0].date_of_brith);
+ };
   return (
     <nav className="navbar navbar-expand-md navbar-light fixed-top mb-4">
       <div className="container">
@@ -136,7 +155,13 @@ const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
               </form> */}
               <Dropdown>
                 <Dropdown.Toggle variant="link" id="dropdown-basic">
-                  <img src={Profil} alt="" className="rounded-circle" />
+                  <img
+                    src={date_of_brith ? date_of_brith : Profil}
+                    alt=""
+                    width={35}
+                    height={35}
+                    className="rounded-circle"
+                  />
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item>
@@ -144,7 +169,7 @@ const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
                   </Dropdown.Item>
                   <Dropdown.Item>
                     <Link to="/profil">
-                      <button className="btn btn-info " type="button">
+                      <button className="btn btn-secondary " type="button">
                         {" "}
                         profil
                       </button>
@@ -153,7 +178,7 @@ const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
                   <Dropdown.Item>
                     <Link to="/login">
                       <button
-                        className="btn btn-primary "
+                        className="btn btn-danger "
                         onClick={() => handleSignOut()}
                         type="button"
                       >

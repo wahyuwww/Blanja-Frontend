@@ -5,6 +5,7 @@ import Card from "../../../base/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../../../../configs/redux/actions/productsActions";
 // import Input from "../../../base/Input/Input";
+import { FormatRupiah } from "@arismun/format-rupiah";
 
 
 const Product = ({ title, subtitle }) => {
@@ -41,7 +42,7 @@ const Product = ({ title, subtitle }) => {
                   src={item.image}
                   to={`/detail/${item.id}`}
                   titleName={item.name}
-                  price={item.price}
+                  price={<FormatRupiah value={item.price} />}
                   merk={item.merk}
                 />
               </div>

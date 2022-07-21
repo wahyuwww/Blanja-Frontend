@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../components/module/profil/profil.css";
 import axios from "axios";
@@ -6,43 +6,55 @@ import Profil from "../../components/module/profil/Profil";
 import Footer from "../../components/module/home/footer/Footer";
 import Navbar from "../../components/module/home/navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProduct  } from "../../configs/redux/actions/productsActions";
-
-
+import { deleteProduct } from "../../configs/redux/actions/productsActions";
+import Swal from "sweetalert2";
 
 const ProductList = () => {
   const [products, getProducts] = useState([]);
-    let product = useSelector((state) => state.delete);
+  let product = useSelector((state) => state.delete);
   const dispatch = useDispatch();
   console.log(product);
-    const navigate = useNavigate()
-  console.log(navigate)
-    async function fetchData() {
-      try {
-        const result = await axios({
-          method: "GET",
-          baseURL: process.env.REACT_APP_API_BACKEND,
-          url: "/products/AllProduct",
-        });
-        getProducts(result.data.data);
-      } catch (error) {
-        console.log(error);
-      }
+  const navigate = useNavigate();
+  console.log(navigate);
+  async function fetchData() {
+    try {
+      const result = await axios({
+        method: "GET",
+        baseURL: process.env.REACT_APP_API_BACKEND,
+        url: "/products/AllProduct",
+      });
+      getProducts(result.data.data);
+    } catch (error) {
+      console.log(error);
     }
-    useEffect(() => {
-      fetchData();
-    }, []);
+  }
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-   const deleteCategory = async (id) => {
-   await axios.delete(`${process.env.REACT_APP_API_BACKEND}/products/${id}`)
-       .then((res) => {
-       alert("delete success");
-         fetchData();
-         dispatch(deleteProduct(res));
-       // navigate('/product')
-         console.log(res);
-       });
-   };
+  const deleteCategory = async (id) => {
+    Swal.fire({
+      title: "Are you sure to delete this product?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await axios
+          .delete(`${process.env.REACT_APP_API_BACKEND}/products/${id}`)
+          .then((res) => {
+            fetchData();
+            dispatch(deleteProduct(res));
+            // navigate('/product')
+            Swal.fire("Deleted!", "Your message has been deleted.", "success");
+            console.log(res);
+          });
+      }
+    });
+  };
 
   return (
     <div className="my-bag">
@@ -124,7 +136,7 @@ const ProductList = () => {
                         <td>{item.description}</td>
                         <td>{item.merk}</td>
                         <td>
-                          <img src={item.image} alt="" width={20} height={ 25} />
+                          <img src={item.image} alt="" width={50} height={55} />
                         </td>
                         <td>
                           <Link
@@ -152,6 +164,6 @@ const ProductList = () => {
       <Footer />
     </div>
   );
-}
+};
 
-export default ProductList
+export default ProductList;

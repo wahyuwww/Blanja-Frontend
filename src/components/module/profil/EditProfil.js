@@ -227,7 +227,7 @@ const EditProfil = () => {
                   </div>
                   <div className="col-sm-3 image-profil text-center">
                     <img
-                      src={imagePreview}
+                      src={imagePreview ? imagePreview :  avatar}
                       className="rounded-circle imagas-profile"
                       alt=""
                     />

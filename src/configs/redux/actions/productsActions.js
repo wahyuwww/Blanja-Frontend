@@ -35,7 +35,7 @@ export const getProduct = ({ page, limit, search, sort }) => async (dispacth) =>
 export const setDataProduct = (page,type) => (dispacth) => {
   axios
     .get(
-      `${process.env.REACT_APP_API_BACKEND}/products/sort/?page=${page}&type=${type}`
+      `${process.env.REACT_APP_API_BACKEND}/products?page=${page}&type=${type}`
     )
     .then((result) => {
       const response = result.data.data;

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import Buttons from "../Button/Button";
@@ -12,7 +13,7 @@ import swal from "sweetalert2";
 import axios from "axios";
 // import axios from "axios";
 // import {setProducts} from "../../../configs/redux/actions/productsActions"
-const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
+const NavbarBase = ({ onChange, onClick, src,srcCart }) => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -103,7 +104,7 @@ const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
                 <i className="bi bi-search" onClick={handleSearch}></i>
               </span>
             </div>
-            <button
+            {/* <button
               className="btn btn-outline-light filter"
               onClick={handleShow}
             >
@@ -126,7 +127,7 @@ const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
                   DESC
                 </Button>
               </Modal.Body>
-            </Modal>
+            </Modal> */}
           </ul>
           {user?.id ? (
             <>

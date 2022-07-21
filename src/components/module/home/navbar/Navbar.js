@@ -4,7 +4,7 @@ import "../StyleHome.css";
 // import styles from "../StyleHome.module.css";
 import NavbarBase from "../../../base/NavbarBase/Index"
 import logo from "../../../../assets/image/belanja.svg";
-import filter from "../../../../assets/image/filter.png"
+// import filter from "../../../../assets/image/filter.png"
 import cart from "../../../../assets/image/search.svg"
 import Profil from "../../../../assets/image/profil.png";
 import bell from "../../../../assets/image/bell (1) 1.png";
@@ -45,7 +45,7 @@ const datas = async () => {
     <div>
       <NavbarBase
         src={logo}
-        srcFilter={filter}
+        // srcFilter={filter}
         srcCart={cart}
         onChange={onChange}
       ></NavbarBase>

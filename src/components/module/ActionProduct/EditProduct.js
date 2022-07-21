@@ -20,6 +20,7 @@ const EditProduct = () => {
      const [imagePreview, setImagePreview] = useState(
        image || "https://fakeimg.pl/350x200/"
     );
+    console.log(image)
   
     // const {isLoading} = useSelector((state) => state.update);
     const dispatch = useDispatch();
@@ -281,7 +282,7 @@ const EditProduct = () => {
                       onChange={(e) => onImageUpload(e)}
                       className="form-control btn btn-upload"
                       type="file"
-                      value={imagePreview}
+                      value={image}
                     />
                   </div>
                 </div>

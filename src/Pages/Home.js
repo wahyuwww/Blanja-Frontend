@@ -9,6 +9,9 @@ import axios from "axios";
 import Card from "../components/base/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../configs/redux/actions/productsActions";
+import { FormatRupiah } from "@arismun/format-rupiah";
+
+
 const Home = () => {
   const products = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch();
@@ -46,7 +49,7 @@ const Home = () => {
                   src={item.image}
                   to={`/detail/${item.id}`}
                   titleName={item.name}
-                  price={item.price}
+                  price={<FormatRupiah value={item.price} />}
                   merk={item.merk}
                 />
               </div>

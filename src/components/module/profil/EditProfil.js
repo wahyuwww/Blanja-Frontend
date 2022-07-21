@@ -90,7 +90,7 @@ const EditProfil = () => {
                     </label>
                     <div className="col-sm-8">
                       <input
-                        className="form-check-input"
+                        className="form-check-input me-2"
                         type="radio"
                         name="flexRadioDefault"
                         id="flexRadioDefault1"
@@ -102,7 +102,7 @@ const EditProfil = () => {
                         Laki-laki
                       </label>
                       <input
-                        className="form-check-input"
+                        className="form-check-input ms-3 me-2"
                         type="radio"
                         name="flexRadioDefault"
                         id="flexRadioDefault1"
@@ -122,50 +122,20 @@ const EditProfil = () => {
                     >
                       Date of birth
                     </label>
-                    <div className="col-sm-2">
-                      <select
-                        className="form-select"
-                        aria-label="Default select example"
-                      >
-                        <option selected>1</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                      </select>
-                    </div>
-                    <div className="col-sm-3">
-                      <select
-                        className="form-select"
-                        aria-label="Default select example"
-                      >
-                        <option selected>Januari</option>
-                        <option value="1">Febuari</option>
-                        <option value="2">Maret</option>
-                        <option value="3">April</option>
-                      </select>
-                    </div>
-                    <div className="col-sm-3">
-                      <select
-                        className="form-select"
-                        aria-label="Default select example"
-                      >
-                        <option selected>1990</option>
-                        <option value="1">1991</option>
-                        <option value="2">1992</option>
-                        <option value="3">1993</option>
-                      </select>
+                    <div className="col-sm-6">
+                     <input id="startDate" class="form-control" type="date" />
                     </div>
                   </div>
                   <div className="mb-3 row">
                     <div className="col-sm-9">
-                      <button type="button" className="btn btn-submit">
+                      <button type="submit" className="btn btn-submit">
                         Save
                       </button>
                     </div>
                   </div>
                 </div>
                 <div className="col-sm-3 image-profil text-center">
-                  <img src={imagePreview} className="rounded-circle" alt="" />
+                  <img src={imagePreview} className="rounded-circle imagas-profile" alt="" />
                   <div className="select-avatar mt-3">
                     <div className="fileUpload btn btn-light btn-select-profil">
                       <span>Choase File</span>

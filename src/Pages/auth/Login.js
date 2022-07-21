@@ -76,7 +76,7 @@ const Login = () => {
           </div>
           {/* <button>{isLoading ? "loading.." : "Login"}</button> */}
           <button className="w-100 btn btn-sign">
-            {isLoading ? "loading.." : "PRIMARY"}
+            {isLoading ? "loading.." : "Login"}
           </button>
           <label className="register mb-3 mt-4" htmlFor="register">
             Don't have a Tokopedia account?

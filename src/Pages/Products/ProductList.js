@@ -110,7 +110,7 @@ const ProductList = () => {
                       <th>stock</th>
                       <th>Deskripsion</th>
                       <th>Merk</th>
-                      <th>Color</th>
+                      <th>Image</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -123,7 +123,9 @@ const ProductList = () => {
                         <td>{item.stock}</td>
                         <td>{item.description}</td>
                         <td>{item.merk}</td>
-                        <td>{item.typestock}</td>
+                        <td>
+                          <img src={item.image} alt="" width={20} height={ 25} />
+                        </td>
                         <td>
                           <Link
                             to={`/edit/${item.id}`}

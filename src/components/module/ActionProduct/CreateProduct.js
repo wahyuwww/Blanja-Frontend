@@ -131,34 +131,6 @@ const CreateProduct = () => {
                         className="form-control form-control-lg ms-2 mt-2 name-input"
                       />
                     </div>
-                    <div className="mb-3 row">
-                      <label
-                        htmlFor="Merk"
-                        className=" col-form-label text-secondary"
-                      >
-                        Unit Merk
-                      </label>
-                      {/* <Form.Select
-                        aria-label="Default select example ms-5"
-                        onChange={(e) => setCategory(e.target.value)}
-                      >
-                        <option>Pilih kategori</option>
-                        <option value="2">pakaian</option>
-                        <option value="3">makanan</option>
-                        <option value="4">tecnolgi</option>
-                        <option value="5">celana</option>
-                        <option
-                          value="6"
-                        >
-                          tas
-                        </option>
-                        <option
-                          value="1"
-                        >
-                          Minuman
-                        </option>
-                      </Form.Select> */}
-                    </div>
                   </div>
                   <div className="col-sm-8">
                     <div className="mb-3 row">

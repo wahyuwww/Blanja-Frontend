@@ -18,7 +18,7 @@ const EditProduct = () => {
      const [typestock, setTypestock] = useState("");
      const [merk, setMerk] = useState("");
      const [imagePreview, setImagePreview] = useState(
-       "https://fakeimg.pl/350x200/"
+       image || "https://fakeimg.pl/350x200/"
     );
   
     // const {isLoading} = useSelector((state) => state.update);
@@ -281,6 +281,7 @@ const EditProduct = () => {
                       onChange={(e) => onImageUpload(e)}
                       className="form-control btn btn-upload"
                       type="file"
+                      value={imagePreview}
                     />
                   </div>
                 </div>

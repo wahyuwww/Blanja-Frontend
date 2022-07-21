@@ -63,6 +63,10 @@
     font-size: 14px;
     line-height: 24px;
 }
+.imagas-profile{
+  width: 100px;
+  height: 100px;
+}
 .title-profil{
     font-weight: 600;
 font-size: 20px;

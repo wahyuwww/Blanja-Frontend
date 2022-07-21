@@ -96,7 +96,7 @@ if (auth.id) return navigate("/login");
             <label htmlFor="floatingPassword">Password</label>
           </div>
           <button className="w-100 btn btn-sign mt-5" type="submit">
-            PRIMARY
+            Refister
           </button>
           <label className="login mb-3 mt-4" for="">
             Don't have a Tokopedia account?

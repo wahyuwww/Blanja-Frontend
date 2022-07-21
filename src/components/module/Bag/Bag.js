@@ -8,6 +8,7 @@ import {  useSelector } from "react-redux";
 // import { setProducts } from "../../../configs/redux/actions/productsActions";
 // import { addTodolist } from "../../../configs/redux/actions/cartAction";
 // import axios from "axios"
+import {FormatRupiah} from "@arismun/format-rupiah"
 
 
 const Bag = () => {
@@ -38,7 +39,7 @@ const Bag = () => {
                         <p className="select-item ms-4">
                           Select all items{" "}
                           <span className="text-secondary">
-                            ({ data.length} items selected)
+                            ({data.length} items selected)
                           </span>{" "}
                         </p>
                         <input
@@ -66,7 +67,6 @@ const Bag = () => {
                         <td className="align-middle">
                           <div className="check ms-2 mt-2">
                             <label className="customcheck mt-2 input">
-                              /
                               <input
                                 className="form-check-input "
                                 type="checkbox"
@@ -116,7 +116,7 @@ const Bag = () => {
                           </tr>
                         </td>
                         <td className="align-middle price">
-                          {item.data.price * count}
+                          <FormatRupiah value={item.data.price * count} />
                         </td>
                       </tbody>
                     </table>
@@ -127,7 +127,7 @@ const Bag = () => {
           )}
           {data.length < 1 && <h1>Sorry Data Empty</h1>}
         </div>
-        <Total totalPrice="Total Price" priceBag={result} />
+        <Total totalPrice="Total Price" priceBag={<FormatRupiah value={result}/> } />
       </div>
     </div>
   );

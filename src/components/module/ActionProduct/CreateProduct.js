@@ -5,7 +5,7 @@ import Profil from "../profil/Profil";
 import { useNavigate } from "react-router-dom";
 import Input from "../../base/Input/Input"
 import deskripsi from "../../../assets/image/seling-product/summernote.png";
-import { Form } from "react-bootstrap";
+// import { Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { createProduct } from "../../../configs/redux/actions/productsActions";
 const CreateProduct = () => {

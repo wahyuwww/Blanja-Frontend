@@ -1,6 +1,6 @@
 import axios from 'axios'
 // import { ActionTypes } from "../constants/action-types";
-
+import swal from "sweetalert2"
 
 
 export const loginUser = (dataForm, navigate)=> async(dispatch)=>{
@@ -11,7 +11,7 @@ export const loginUser = (dataForm, navigate)=> async(dispatch)=>{
           dataForm
         );
       const user = result.data.data
-      // console.log(result.data.data.token);
+      console.log(result.data.data.name);
       const token = result.data.data.token
         localStorage.setItem("token", token);
         localStorage.setItem("refreshToken", user.refreshToken);
@@ -22,9 +22,19 @@ export const loginUser = (dataForm, navigate)=> async(dispatch)=>{
          token: token.data,
          payload: user,
        });
+       swal.fire({
+         icon: "success",
+         title: "Selamat anda berhasil Login",
+         text: `Hallo !!`,
+       });
         navigate('/home')
 
     } catch (error) {
+      swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "data yang anda inputkan salah",
+    });
         console.log(error);
     }
 }
@@ -41,8 +51,18 @@ export const signUp = (dataForm, navigate) => async (dispatch) => {
     localStorage.setItem("token", user.token);
     localStorage.setItem("refreshToken", user.refreshToken);
     dispatch({ type: "USER_REGISTER_SUCCESS", payload: user });
+     swal.fire({
+       icon: "success",
+       title: "Selamat anda berhasil Register",
+       text: `Silahkan Login !!`,
+     });
     navigate("/login");
   } catch (error) {
+     swal.fire({
+       icon: "error",
+       title: "Oops...",
+       text: "data yang anda inputkan salah",
+     });
     console.log(error);
   }
 };

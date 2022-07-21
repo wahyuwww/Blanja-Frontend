@@ -7,7 +7,8 @@ import cart from "../../../assets/image/search.svg";
 import Profil from "../../../assets/image/profil.png";
 import bell from "../../../assets/image/bell (1) 1.png";
 import mail from "../../../assets/image/mail (3) 1.png";
-import { Dropdown,Button, Modal } from "react-bootstrap";
+import { Dropdown, Button, Modal } from "react-bootstrap";
+import swal from "sweetalert2";
 // import axios from "axios";
 // import {setProducts} from "../../../configs/redux/actions/productsActions"
 const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
@@ -23,6 +24,10 @@ const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("id");
     dispatch(signOut());
+    swal.fire({
+      icon: "success",
+      title: `Selamat Tinggal!!`,
+    });
   };
 
   const [search, setSearch] = useState([]);

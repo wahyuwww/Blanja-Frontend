@@ -122,7 +122,7 @@ REACT_APP_API_BACKEND = [API_URL]
 
 ## Screenshoots
 
-<p align="center" display=flex>
+<p align="center" >
 <table>
  
   <tr>

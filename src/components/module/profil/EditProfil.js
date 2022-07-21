@@ -15,7 +15,7 @@ import { updateUser } from "../../../configs/redux/actions/userAction";
 const EditProfil = () => {
   // const { user } = useSelector((state) => state.auth);
  const [image, setImage] = useState("");
-  const [imagePreview, setImagePreview] = useState(image || avatar);
+  const [imagePreview, setImagePreview] = useState(image);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phonenumber, setPhonenumber] = useState("");
@@ -227,7 +227,7 @@ const EditProfil = () => {
                   </div>
                   <div className="col-sm-3 image-profil text-center">
                     <img
-                      src={imagePreview ? imagePreview :  avatar}
+                      src={imagePreview !== undefined ? imagePreview :  avatar}
                       className="rounded-circle imagas-profile"
                       alt=""
                     />

@@ -121,12 +121,12 @@ REACT_APP_API_BACKEND = [API_URL]
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Screenshoots
-<!-- <p align="center" display=flex>
+<p align="center" display=flex>
 <table>
  
   <tr>
-    <td><image src="https://i.postimg.cc/9QgrMY0P/Belanja-3.png" alt="Login Page" width=100%></td>
-    <td><image src="https://i.postimg.cc/rsqfmkZP/Belanja-4.png" alt="Dashboard Page" width=100%/></td>
+    <td><image src="./screenshoot/regis.png" alt="Register Page" width=100%></td>
+    <td><image src="./screenshoot/login.png" alt="Login Pagee" width=100%/></td>
   </tr>
    <tr>
     <td>Register Page</td>
@@ -134,8 +134,8 @@ REACT_APP_API_BACKEND = [API_URL]
   </tr>
   
   <tr>
-    <td><image src="https://i.postimg.cc/50ndmnzj/Belanja-2.png" alt="List Brand Page" width=100%></td>
-    <td><image src="https://i.postimg.cc/c4xr9yXF/Belanja-5.png" alt="View Brand Page" width=100%/></td>
+    <td><image src="./screenshoot/Home.png" alt="Home Page" width=100%></td>
+    <td><image src="./screenshoot/detail.png" alt="Detail Product Page" width=100%/></td>
   </tr>
   <tr>
     <td>Home Page</td>
@@ -143,8 +143,8 @@ REACT_APP_API_BACKEND = [API_URL]
   </tr>
 
   <tr>
-    <td><image src="https://lh3.googleusercontent.com/d/1OhOPC9E9pIjTI0Eu34ZC5i4rGDWdvbQ5" alt="Add Brand Page" width=100%></td>
-    <td><image src="https://lh3.googleusercontent.com/d/1y7tsNWqucxN5nb3JNM4E7Ot6iI10zu3w" alt="Edit Brand Page" width=100%></td>
+    <td><image src="./screenshoot/my Poruducts.png" alt="My Product" width=100%></td>
+    <td><image src="./screenshoot/chekout.png" alt="Checkout Page" width=100%></td>
   </tr>
   <tr>
       <td>My Product</td>
@@ -152,8 +152,8 @@ REACT_APP_API_BACKEND = [API_URL]
   </tr>
   
   <tr>
-    <td><image src="https://lh3.googleusercontent.com/d/1zSl3Ougkha9kDAytbH2Lo0ItVSuYR12P" alt="List Store Page" width=100%></td>
-    <td><image src="https://lh3.googleusercontent.com/d/1nShCm53vwNlXg2J74EeMQNUEQKM9vMbc" alt="List User Page" width=100%></td>
+    <td><image src="./screenshoot/profil.png" alt="Update Profil" width=100%></td>
+    <td><image src="./screenshoot/products list.png" alt="List My Product" width=100%></td>
   </tr>
   <tr>
       <td>Update Profil</td>
@@ -161,8 +161,8 @@ REACT_APP_API_BACKEND = [API_URL]
   </tr>
   
   <tr>
-    <td><image src="https://lh3.googleusercontent.com/d/1L-nE-XVx5MKyIihvCaUYdMZjCY5gLQpq" alt="List Product Page" width=100%></td>
-    <td><image src="https://i.postimg.cc/rpShz436/Fire-Shot-Capture-057-Blanja-Admin-Management-Transaction-localhost.png" alt="List Transaction Page" width=100%></td>
+    <td><image src="./screenshoot/add.png" alt="Salling Product" width=100%></td>
+    <td><image src="./screenshoot/edit product.png" alt="Edit Product" width=100%></td>
   </tr>
   <tr>
       <td>Salling Product</td>
@@ -170,11 +170,6 @@ REACT_APP_API_BACKEND = [API_URL]
   </tr>
 </table>
 
-  <p align="center">
-     <img src="https://lh3.googleusercontent.com/d/19o1SHXmy-Uy6Bfdd3pcycYvTRKP7ZTXn" alt="List Category Page" width=50% />
-  </p>
-  <p align="center">List Category Page</p>
-</p> -->
 
 
 ## Contributing

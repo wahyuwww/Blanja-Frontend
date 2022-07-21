@@ -17,7 +17,7 @@ const Total = ({
         <table className="mt-2">
           <tr>
             <th className="text-left sum-price">{totalPrice}</th>
-            <td className="float-end text-black">${priceBag}</td>
+            <td className="float-end text-black">{priceBag}</td>
           </tr>
           <tr>
             <th className="text-left sum-price">{deleveri}</th>

@@ -282,7 +282,7 @@ const EditProduct = () => {
                       onChange={(e) => onImageUpload(e)}
                       className="form-control btn btn-upload"
                       type="file"
-                      value={image}
+                      // value={image}
                     />
                   </div>
                 </div>

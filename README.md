@@ -17,7 +17,7 @@
   <a href="https://github.com/dec0dOS/amazing-github-template/discussions">Ask a Question</a>
 </div>
 
-<div align="center">
+
 <div align="center">
 <br />
 

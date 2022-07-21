@@ -122,6 +122,7 @@ REACT_APP_API_BACKEND = [API_URL]
 
 ## Screenshot
 ### Landing Page
+[![Belanja-2.png](https://i.postimg.cc/RCfwKRyR/Belanja-2.png)](https://postimg.cc/w3qtdh6y)
 
 
 ## Contributing

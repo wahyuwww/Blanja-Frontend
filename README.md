@@ -60,7 +60,7 @@
 
 ## About The Project
 
-**Blanja** Management Data.
+**Blanja** is a web-based marketplace application. This application allows users to sell products and buy existing products. This Blanja application is built using ReactJs for the frontend, NodeJS and ExpressJS for the backend, and Postgresql for data storage.
 
 ### Built With
 

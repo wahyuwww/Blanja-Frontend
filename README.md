@@ -134,7 +134,7 @@ REACT_APP_API_BACKEND = [API_URL]
   </tr>
   
   <tr>
-    <td><image src="./screenshoot/Home.png" alt="Home Page" width=100%></td>
+    <td><image src="./screenshoot/Home.png" alt="Home Page" width=100% hight=85%></td>
     <td><image src="./screenshoot/detail.png" alt="Detail Product Page" width=100%/></td>
   </tr>
   <tr>

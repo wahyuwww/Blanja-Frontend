@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import { Link } from "react-router-dom";
 import "../StyleHome.css";
 // import styles from "../StyleHome.module.css";
@@ -11,6 +11,7 @@ import bell from "../../../../assets/image/bell (1) 1.png";
 import mail from "../../../../assets/image/mail (3) 1.png";
 import { useDispatch, useSelector } from "react-redux";
 import { Dropdown } from "react-bootstrap";
+import axios from "axios"
 import { signOut } from "../../../../configs/redux/actions/userAction";
 
 
@@ -21,6 +22,24 @@ console.log(user);
   const handleSignOut = () => {
    localStorage.removeItem("id");
   dispatch(signOut());
+};
+const [date_of_brith, setDate_of_brith] = useState("");
+useEffect(() => {
+  datas();
+}, []);
+
+const datas = async () => {
+  const token = localStorage.getItem("token");
+  const response = await axios.get(
+    `${process.env.REACT_APP_API_BACKEND}/auth/profile`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  console.log(response.data.data.username);
+  setDate_of_brith(response.data.data[0].date_of_brith);
 };
   return (
     <div>
@@ -53,7 +72,13 @@ console.log(user);
             </button>
             <Dropdown className="d-inline mx-2">
               <Dropdown.Toggle variant="light" id="dropdown-basic">
-                <img src={Profil} alt="" className="rounded-circle" />
+                <img
+                  src={date_of_brith ? date_of_brith : Profil}
+                  alt=""
+                  width={25}
+                  height={25}
+                  className="rounded-circle"
+                />
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item>

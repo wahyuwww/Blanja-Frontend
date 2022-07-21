@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link,useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import Buttons from "../Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../../configs/redux/actions/userAction";
@@ -18,7 +18,7 @@ const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { data } = useSelector((state) => state.todo);
   console.log(user);
   const handleSignOut = () => {
@@ -56,28 +56,28 @@ const NavbarBase = ({ onChange, onClick, src, srcFilter, srcCart }) => {
   // };
   useEffect(() => {
     // getProducts();
-    datas()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    datas();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
- const [date_of_brith, setDate_of_brith] = useState("");
- useEffect(() => {
-   datas();
- }, []);
+  const [date_of_brith, setDate_of_brith] = useState("");
+  useEffect(() => {
+    datas();
+  }, []);
 
- const datas = async () => {
-   const token = localStorage.getItem("token");
-   const response = await axios.get(
-     `${process.env.REACT_APP_API_BACKEND}/auth/profile`,
-     {
-       headers: {
-         Authorization: `Bearer ${token}`,
-       },
-     }
-   );
-   console.log(response.data.data.username);
-   setDate_of_brith(response.data.data[0].date_of_brith);
- };
+  const datas = async () => {
+    const token = localStorage.getItem("token");
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_BACKEND}/auth/profile`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log(response.data.data.username);
+    setDate_of_brith(response.data.data[0].date_of_brith);
+  };
   return (
     <nav className="navbar navbar-expand-md navbar-light fixed-top mb-4">
       <div className="container">

@@ -17,7 +17,7 @@ const CreateProduct = () => {
     const [merk, setMerk] = useState("");
     const [price, setPrice] = useState('')
     const [typestock, setTypestock] = useState("");
-    const [idcategory, setCategory] = useState("");
+    // const [idcategory, setCategory] = useState("");
     const [imagePreview, setImagePreview] = useState(
       ["https://fakeimg.pl/350x250/"]
   );
@@ -34,7 +34,7 @@ const CreateProduct = () => {
       data.append("price", price);
       data.append("typestock", typestock);
       data.append("image", image);
-      data.append("idcategory", idcategory);
+      // data.append("idcategory", idcategory);
         e.preventDefault();
          dispatch(createProduct(data, navigate));
         //  navigate("/productList");
@@ -138,7 +138,7 @@ const CreateProduct = () => {
                       >
                         Unit Merk
                       </label>
-                      <Form.Select
+                      {/* <Form.Select
                         aria-label="Default select example ms-5"
                         onChange={(e) => setCategory(e.target.value)}
                       >
@@ -157,7 +157,7 @@ const CreateProduct = () => {
                         >
                           Minuman
                         </option>
-                      </Form.Select>
+                      </Form.Select> */}
                     </div>
                   </div>
                   <div className="col-sm-8">

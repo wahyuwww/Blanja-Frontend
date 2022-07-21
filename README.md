@@ -17,6 +17,7 @@
   <a href="https://github.com/dec0dOS/amazing-github-template/discussions">Ask a Question</a>
 </div>
 
+
 <div align="center">
 <br />
 
@@ -121,8 +122,7 @@ REACT_APP_API_BACKEND = [API_URL]
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Screenshoots
-
-<p align="center" >
+<p align="center" display=flex>
 <table>
  
   <tr>
@@ -133,16 +133,16 @@ REACT_APP_API_BACKEND = [API_URL]
     <td>Register Page</td>
     <td>Login Page</td>
   </tr>
-  <tr>
-    <td><image src="./screenshoot/Home.png" alt="Home Page"width=100%  >Home Page</td>
-  </tr>
-<tr>
-  <td><image src="./screenshoot/detail.png" alt="Detail Product Page" width=100%/></td>
-  </tr>
-  <tr> 
-  <td>Detail Product Page</td>
-  </tr>
   
+  <tr>
+    <td><image src="./screenshoot/Home.png" alt="Home Page" width=100% ></td>
+    <td><image src="./screenshoot/detail.png" alt="Detail Product Page" width=100%/></td>
+  </tr>
+  <tr>
+    <td>Home Page</td>
+    <td>Detail Product Page</td>
+  </tr>
+
   <tr>
     <td><image src="./screenshoot/my Poruducts.png" alt="My Product" width=100%></td>
     <td><image src="./screenshoot/chekout.png" alt="Checkout Page" width=100%></td>
@@ -153,23 +153,25 @@ REACT_APP_API_BACKEND = [API_URL]
   </tr>
   
   <tr>
-    <td><image src="./screenshoot/profil.png" alt="Update Profil" width=100%></td>
     <td><image src="./screenshoot/products list.png" alt="List My Product" width=100%></td>
+        <td><image src="./screenshoot/add.png" alt="Salling Product" width=100%></td>
   </tr>
   <tr>
-      <td>Update Profil</td>
       <td>List My Product</td>
+       <td>Edit Product</td>
   </tr>
   
   <tr>
-    <td><image src="./screenshoot/add.png" alt="Salling Product" width=100%></td>
     <td><image src="./screenshoot/edit product.png" alt="Edit Product" width=100%></td>
+    <td><image src="./screenshoot/profil.png" alt="Update Profil" width=100%></td>
   </tr>
   <tr>
       <td>Salling Product</td>
-      <td>Edit Product</td>
+     <td>Update Profil</td>
   </tr>
 </table>
+
+
 
 ## Contributing
 
@@ -192,6 +194,7 @@ Contributions are what make the open source community such an amazing place to b
 :rocket: [`Web Service`](https://belanjain-aja.herokuapp.com/v1)
 
 :rocket: [`Demo Blanja`](https://react-belanja.vercel.app/)
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

@@ -18,12 +18,17 @@ const ProductList = () => {
   console.log(navigate);
   async function fetchData() {
     try {
-      const result = await axios({
-        method: "GET",
-        baseURL: process.env.REACT_APP_API_BACKEND,
-        url: "/products/AllProduct",
-      });
-      getProducts(result.data.data);
+     const token = localStorage.getItem("token");
+     const createdAt = await axios.get(
+       `${process.env.REACT_APP_API_BACKEND}/products/myProduct`,
+       {
+         headers: {
+           Authorization: `Bearer ${token}`,
+         },
+       }
+     );
+     console.log(createdAt.data.data);
+      getProducts(createdAt.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -128,25 +133,30 @@ const ProductList = () => {
                   </thead>
                   <tbody>
                     {products.map((item, index) => (
-                      <tr key={item.id}>
+                      <tr key={item.idproduct}>
                         <td>{index + 1}</td>
-                        <td>{item.name}</td>
+                        <td>{item.nameproduct}</td>
                         <td>{item.price}</td>
                         <td>{item.stock}</td>
                         <td>{item.description}</td>
                         <td>{item.merk}</td>
                         <td>
-                          <img src={item.image} alt="" width={50} height={55} />
+                          <img
+                            src={item.imageproduct}
+                            alt=""
+                            width={50}
+                            height={55}
+                          />
                         </td>
                         <td>
                           <Link
-                            to={`/edit/${item.id}`}
+                            to={`/edit/${item.idproduct}`}
                             className="btn btn-primary "
                           >
                             Edit
                           </Link>
                           <button
-                            onClick={() => deleteCategory(item.id)}
+                            onClick={() => deleteCategory(item.idproduct)}
                             className="btn btn-danger mt-1"
                           >
                             Delete

@@ -10,29 +10,33 @@ export const setProducts = (products) => {
   };
 };
 
+export const getProduct =
+  ({ page, limit, search, sort }) =>
+  async (dispacth) => {
+    try {
+      const navigate = useNavigate();
+      dispacth({ type: ActionTypes.GET_PRODUCT_PENDING });
+      const { data } = await axio({
+        url: `/products/filter?page=${page}&limit=${limit}${
+          search ? "&search=" + search : ""
+        }${sort ? "&sort=" + sort : ""}`,
+        method: "GET",
+      });
 
-export const getProduct = ({ page, limit, search, sort }) => async (dispacth) => {
-  try {
-    const navigate= useNavigate()
-    dispacth({ type: ActionTypes.GET_PRODUCT_PENDING });
-    const { data } = await axio({
-      url: `/products/filter?page=${page}&limit=${limit}${
-        search ? "&search=" + search : ""
-      }${sort ? "&sort=" + sort : ""}`,
-      method: "GET",
-    });
-     
-    dispacth({
-      type: ActionTypes.GET_PRODUCT_SUCCESS,
-      payload: { data: data.data, pagination: data.pagination },
-    });
-    navigate("/productList");
-  } catch (error) {
-    dispacth({ type: ActionTypes.GET_PRODUCT_ERROR, payload: error.response });
-  }
-}
+      dispacth({
+        type: ActionTypes.GET_PRODUCT_SUCCESS,
+        payload: { data: data.data, pagination: data.pagination },
+      });
+      navigate("/productList");
+    } catch (error) {
+      dispacth({
+        type: ActionTypes.GET_PRODUCT_ERROR,
+        payload: error.response,
+      });
+    }
+  };
 
-export const setDataProduct = (page,type) => (dispacth) => {
+export const setDataProduct = (page, type) => (dispacth) => {
   axios
     .get(
       `${process.env.REACT_APP_API_BACKEND}/products?page=${page}&type=${type}`
@@ -47,7 +51,7 @@ export const setDataProduct = (page,type) => (dispacth) => {
     .catch((err) => {
       console.log(err);
     });
-}
+};
 
 export const selectedProduct = (product) => {
   return {
@@ -104,17 +108,21 @@ export const getDetail = (id) => async (dispatch) => {
 //   );
 //   dispatch({ type: ActionTypes.CREATE_PRODUCTS, payload: result });
 // };
-export const createProduct = (data,navigate) => async (dispacth) => {
+export const createProduct = (data, navigate) => async (dispacth) => {
   try {
     dispacth({ type: ActionTypes.ADD_PRODUCTS_PENDING });
+    const token = localStorage.getItem("token");
     const createdAt = await axios.post(
       `${process.env.REACT_APP_API_BACKEND}/products/`,
       data,
       {
         "content-type": "multipart/form-data",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       }
-      );
-      navigate("/productlist")
+    );
+    navigate("/productlist");
     dispacth({ type: ActionTypes.CREATE_PRODUCTS, payload: createdAt });
   } catch (error) {
     dispacth({ type: ActionTypes.GET_PRODUCT_ERROR, payload: error.response });
@@ -135,7 +143,7 @@ export const createProduct = (data,navigate) => async (dispacth) => {
 //     dispacth({ type: ActionTypes.GET_PRODUCT_ERROR, payload: error.response });
 //   }
 // };
- 
+
 export const deleteProduct = (product) => {
   return {
     type: ActionTypes.DELETE_PRODUCTS,

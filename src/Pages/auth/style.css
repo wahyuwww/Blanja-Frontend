@@ -32,11 +32,23 @@ body {
     /* margin-left: 10px; */
     color: #9B9B9B;
 }
+.selers {
+    border: 1px solid #9B9B9B;
+    border-radius: 0px 4px 4px 0px;
+  background-color: fff; 
+   color: rgb(20, 20, 20);
+}
+.selers:hover {
+    border: 1px solid #9B9B9B;
+    border-radius: 0px 4px 4px 0px;
+  background-color: fff; 
+   color: rgb(22, 20, 20);
+}
 .seler {
     border: 1px solid #9B9B9B;
     border-radius: 0px 4px 4px 0px;
-  background-color: #fff;
-  color: #9B9B9B;
+  background-color: #DB3022; 
+    color: #ffffff;
 }
 .seler-login, .costemer-login{
     background-color: #DB3022;
@@ -46,9 +58,23 @@ body {
 .seler-login{
     border-radius: 0px 5px 5px 0px;
 }
+.costemer{
+   background-color: #DB3022; 
+   color: #fff;
+}
+.costemers{
+   background-color: #fafafa; 
+   color: rgb(0, 0, 0);
+   border: 1px solid #9B9B9B;
+}
 .costemer:hover{
     background-color: #DB3022 ;
     color: #fff;
+     border: 1px solid #9B9B9B;
+}
+.costemers:hover{
+    background-color: #ffffff ;
+    color: rgb(0, 0, 0);
      border: 1px solid #9B9B9B;
 }
 .seler:hover{

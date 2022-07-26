@@ -7,6 +7,7 @@ import avatar from "../../../assets/image/edit-avatar.png";
 import pekage from "../../../assets/image/seling-product/package 1.png";
 import shoping from "../../../assets/image/seling-product/shopping-cart (3) 1.png";
 import { useSelector } from "react-redux";
+import {Link} from "react-router-dom"
 import axios from "axios";
 
 const Profil = ({
@@ -69,7 +70,7 @@ const Profil = ({
               <img src={imgOne} alt="" />
             </button>
             <button
-              className="btn btn-toggle title-dashboard d-inline-flex align-items-center rounded border-0 collapsed text-secondary"
+              className="btn btn-toggle title-dashboard d-inline-flex align-items-center rounded border-0 collapsed text-black"
               data-bs-toggle="collapse"
               data-bs-target="#home-collapse"
               aria-expanded="false"
@@ -85,14 +86,16 @@ const Profil = ({
             <button className="btn btn-location">
               <img src={imgTwo} alt="" />
             </button>
-            <button
-              className="btn btn-toggle title-dashboard d-inline-flex align-items-center rounded border-0 collapsed text-black"
+          <Link to="/productList">
+              <button
+              className="btn btn-toggle title-dashboard d-inline-flex align-items-center rounded border-0 collapsed text-secondary"
               data-bs-toggle="collapse"
               data-bs-target="#dashboard-collapse"
               aria-expanded="true"
             >
               <span className="text-profil">{titleTwo}</span>
             </button>
+          </Link>
             <img src={vektor} className="img-down ms-4" alt="" />
             <div className="collapse show" id="dashboard-collapse">
               {children}

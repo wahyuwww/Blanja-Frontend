@@ -24,6 +24,7 @@ const CreateProduct = () => {
   console.log();
   const { isLoading } = useSelector((state) => state.Createproducts);
    const { user } = useSelector((state) => state.auth);
+  console.log(user);
    const iduser = user.id
     const dispatch = useDispatch();
    

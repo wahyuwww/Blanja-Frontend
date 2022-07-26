@@ -16,6 +16,7 @@ const Register = ({ label, ...props }) => {
     name: "",
     email: "",
     password: "",
+    role: "admin",
   });
 
        if (auth === user) {
@@ -26,6 +27,7 @@ const Register = ({ label, ...props }) => {
      setUser({
        ...user,
        [e.target.name]: e.target.value,
+       role : "admin"
      });
    };
 
@@ -43,17 +45,17 @@ if (auth.id) return navigate("/login");
           <img className="mb-4 mt-4 ms-2" src={blanja} alt="" />
           <h1 className="title-login mb-3">Please sign up with your account</h1>
           <ul className="nav nav-justified mb-4 mt-5" id="ex1" role="tablist">
-            <li className="nav-item active" role="presentation">
-              <button className="w-100 btn costemer" type="submit">
-                Costemer
-              </button>
-            </li>
             <li className="nav-item" role="presentation">
-              <Link to="/registerSeller">
-                <button className="w-100 btn selers" type="button">
-                  Seler
+              <Link to="/register">
+                <button className="w-100 btn costemers" type="submit">
+                  Costemer
                 </button>
               </Link>
+            </li>
+            <li className="nav-item" role="presentation">
+              <button className="w-100 btn seler" type="submit">
+                Seler
+              </button>
             </li>
           </ul>
         </div>

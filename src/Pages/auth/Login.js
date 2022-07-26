@@ -35,7 +35,7 @@ const Login = () => {
           <img className="mb-4 text-center" src={vektor} alt="" />
           <img className="mb-4 mt-4 ms-2" src={blanja} alt="" />
           <h1 className="mb-3 title-login">Please login with your account</h1>
-          <ul className="nav nav-justified mb-4 mt-5" id="ex1" role="tablist">
+          {/* <ul className="nav nav-justified mb-4 mt-5" id="ex1" role="tablist">
             <li className="nav-item " role="presentation">
               <button className="w-100 btn costemer" type="submit">
                 Costemer
@@ -46,7 +46,7 @@ const Login = () => {
                 Seler
               </button>
             </li>
-          </ul>
+          </ul> */}
         </div>
         <form onSubmit={handleLogin}>
           <div className="form-floating">

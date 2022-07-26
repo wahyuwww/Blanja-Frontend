@@ -1,77 +1,83 @@
 import React, { useState, useEffect } from "react";
-import {useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./styleCreate.css";
 import Profil from "../profil/Profil";
 
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateProduct } from "../../../configs/redux/actions/productsActions";
 
 const EditProduct = () => {
+  const navigate = useNavigate();
+  const [image, setImage] = useState("https://fakeimg.pl/350x200/");
+  const [name, setName] = useState("");
+  const [description, setDeskripsion] = useState("");
+  const [stock, setStock] = useState("");
+  const [price, setPrice] = useState("");
+  const [typestock, setTypestock] = useState("");
+  const [merk, setMerk] = useState("");
+  const [imagePreview, setImagePreview] = useState(
+    image || "https://fakeimg.pl/350x200/"
+  );
+  console.log(image);
+  const { user } = useSelector((state) => state.auth);
+  const iduser = user.id;
+  // const {isLoading} = useSelector((state) => state.update);
+  const dispatch = useDispatch();
 
-     const navigate = useNavigate();
-     const [image, setImage] = useState("https://fakeimg.pl/350x200/");
-     const [name, setName] = useState("");
-     const [description, setDeskripsion] = useState("");
-     const [stock, setStock] = useState("");
-     const [price, setPrice] = useState("");
-     const [typestock, setTypestock] = useState("");
-     const [merk, setMerk] = useState("");
-     const [imagePreview, setImagePreview] = useState(
-       image || "https://fakeimg.pl/350x200/"
-    );
-    console.log(image)
-  
-    // const {isLoading} = useSelector((state) => state.update);
-    const dispatch = useDispatch();
-   
-    const { id } = useParams();
-      const onSubmit = (e) => {
-      const data = new FormData();
-      data.append("name", name);
-      data.append("description", description);
-      data.append("stock", stock);
-      data.append("price", price);
-      data.append("typestock", typestock);
-      data.append("image", image);
-      data.append("merk", merk);
-        e.preventDefault();
-        axios
-          .put(`${process.env.REACT_APP_API_BACKEND}/products/${id}`, data, {
-            "content-type": "multipart/form-data",
-          })
-          .then((res) => {
-            dispatch(updateProduct(res));
-            navigate("/productList");
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-       
-    };
-    useEffect(() => {
-        getProductById();
+  const { id } = useParams();
+  const onSubmit = (e) => {
+    const data = new FormData();
+    data.append("name", name);
+    data.append("description", description);
+    data.append("stock", stock);
+    data.append("price", price);
+    data.append("typestock", typestock);
+    data.append("image", image);
+    data.append("merk", merk);
+    data.append("iduser", iduser);
+    const token = localStorage.getItem("token");
+    e.preventDefault();
+    axios
+      .put(`${process.env.REACT_APP_API_BACKEND}/products/${id}`, data, {
+        "content-type": "multipart/form-data",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        dispatch(updateProduct(res));
+        navigate("/productList");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    getProductById();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
- 
-    const onImageUpload = (e) => {
-      const file = e.target.files[0];
-      setImage(file);
-      setImagePreview(URL.createObjectURL(file));
-      console.log(URL.createObjectURL(file));
-    };
+  }, []);
+
+  const onImageUpload = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+    setImagePreview(URL.createObjectURL(file));
+    console.log(URL.createObjectURL(file));
+  };
   const getProductById = async () => {
-    const response = await axios.get(`${process.env.REACT_APP_API_BACKEND}/products/${id}`);
-    console.log(response.data.data.image)
-    setImagePreview(response.data.data.image)
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_BACKEND}/products/${id}`
+    );
+    console.log(response);
+    setImagePreview(response.data.data.imageproduct);
     // setImage(response.data.data.image)
-    setName(response.data.data.name)
-    setMerk(response.data.data.merk)
-    setPrice(response.data.data.price)
-    setStock(response.data.data.stock)
-    setTypestock(response.data.data.typestock)
-    setDeskripsion(response.data.data.description)
-  }
+    setName(response.data.data.nameproduct);
+    setMerk(response.data.data.merk);
+    setPrice(response.data.data.price);
+    setStock(response.data.data.stock);
+    setTypestock(response.data.data.typestock);
+    setDeskripsion(response.data.data.description);
+  };
   return (
     <form onSubmit={onSubmit}>
       <div className="my-bag">
@@ -328,4 +334,4 @@ const EditProduct = () => {
   );
 };
 
-  export default EditProduct;
+export default EditProduct;

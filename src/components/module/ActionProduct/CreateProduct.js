@@ -23,6 +23,9 @@ const CreateProduct = () => {
   );
   console.log();
   const { isLoading } = useSelector((state) => state.Createproducts);
+   const { user } = useSelector((state) => state.auth);
+  console.log(user);
+   const iduser = user.id
     const dispatch = useDispatch();
    
     const onSubmit = (e) => {
@@ -34,6 +37,7 @@ const CreateProduct = () => {
       data.append("price", price);
       data.append("typestock", typestock);
       data.append("image", image);
+      data.append("iduser", iduser);
       // data.append("idcategory", idcategory);
         e.preventDefault();
          dispatch(createProduct(data, navigate));

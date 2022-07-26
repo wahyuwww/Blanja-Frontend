@@ -13,9 +13,14 @@ export const loginUser = (dataForm, navigate)=> async(dispatch)=>{
           dataForm
         );
       const user = result.data.data
-      console.log(result.data.data.name);
+      const users = {
+        role: result.data.data.role,
+        email : result.data.data.email
+      }
+      // console.log(user);
       const token = result.data.data.token
         localStorage.setItem("token", token);
+        localStorage.setItem("user", users.role);
         localStorage.setItem("refreshToken", user.refreshToken);
         dispatch({type: 'USER_LOGIN_SUCCESS', payload: user})
 

@@ -25,6 +25,8 @@ const NavbarBase = ({ onChange, onClick, src,srcCart }) => {
   const handleSignOut = () => {
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("id");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     dispatch(signOut());
     swal.fire({
       icon: "success",

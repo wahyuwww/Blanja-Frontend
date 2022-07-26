@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "../../Pages/Home";
 import Detail from "../../Pages/DetailProduct";
 import Login from "../../Pages/auth/Login";
 import Register from "../../Pages/auth/Register";
+import RegisterSeller from "../../Pages/auth/RegisterSeller";
 // import Create from '.../../src/components/form/CreateProduct';
 import ProductList from "../../Pages/Products/ProductList";
 // import SellingProduct from '../../Pages/SellingProduct';
@@ -13,12 +14,20 @@ import Checkout from "../../Pages/Checkout";
 import CreateProduct from "../../Pages/Products/CreateNew";
 import Profil from "../../Pages/Profil";
 import Page404 from "../../Pages/Page404/Page404";
-import RequireAuth from '../../components/base/RequireAuth'
-import MyProducts from '../../Pages/MyProducts';
+import RequireAuth from "../../components/base/RequireAuth";
+import MyProducts from "../../Pages/MyProducts";
+import Swal from "sweetalert2";
 
-
+const Role = ({ children }) => {
+  const role = localStorage.getItem("user");
+  console.log(role);
+  if (role !== "admin") {
+    Swal.fire("anda bukan seller ?", "silahkan daftar seller dulu", "question");
+    return <Navigate to="/profil" replace />;
+  }
+  return children;
+};
 function Router() {
-    
   return (
     <BrowserRouter>
       <Routes>
@@ -27,12 +36,15 @@ function Router() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/registerSeller" element={<RegisterSeller />} />
         <Route path="/myProducts" element={<MyProducts />} />
         <Route
           path="/productList"
           element={
             <RequireAuth>
-              <ProductList />
+              <Role>
+                <ProductList />
+              </Role>
             </RequireAuth>
           }
         />
@@ -40,7 +52,10 @@ function Router() {
           path="/edit/:id"
           element={
             <RequireAuth>
-              <UpdateProduct />
+               <Role>
+                <UpdateProduct />
+              </Role>
+             
             </RequireAuth>
           }
         />
@@ -48,7 +63,10 @@ function Router() {
           path="/Selling"
           element={
             <RequireAuth>
+                <Role>
               <CreateProduct />
+              </Role>
+              
             </RequireAuth>
           }
         />
@@ -82,4 +100,4 @@ function Router() {
   );
 }
 
-export default Router
+export default Router;

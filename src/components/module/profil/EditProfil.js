@@ -95,7 +95,7 @@ const EditProfil = () => {
       <div className="row">
         <Profil
           titleOne="My Account"
-          titleTwo="Shipping Adrress"
+          titleTwo="My product"
           titleThere="My order"
           imgOne={home}
           imgTwo={pekage}

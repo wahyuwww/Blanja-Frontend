@@ -18,7 +18,7 @@ export const loginUser = (dataForm, navigate)=> async(dispatch)=>{
         role: result.data.data.role,
         email : result.data.data.email
       }
-      console.log(result);
+      console.log(users);
       const token = result.data.data.token
         localStorage.setItem("token", token);
         localStorage.setItem("user", role);

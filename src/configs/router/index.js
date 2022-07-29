@@ -17,11 +17,12 @@ import Page404 from "../../Pages/Page404/Page404";
 import RequireAuth from "../../components/base/RequireAuth";
 import MyProducts from "../../Pages/MyProducts";
 import Swal from "sweetalert2";
+import {  useSelector } from "react-redux";
 
 const Role = ({ children }) => {
-  const role = localStorage.getItem("user");
-  console.log(role);
-  if (role !== "admin") {
+   const { user } = useSelector((state) => state.auth);
+   console.log(user)
+  if (user.role !== "admin") {
     Swal.fire("anda bukan seller ?", "silahkan daftar seller dulu", "question");
     return <Navigate to="/profil" replace />;
   }

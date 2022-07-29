@@ -60,7 +60,7 @@
 
 ## About The Project
 
-**Blanja** Management Data.
+Blanja is a web-based marketplace application. This application allows users to sell products and buy existing products. This Blanja application is built using ReactJs for the frontend, ExpressJS for the backend, and Postgresql for data storage.
 
 ### Built With
 
@@ -127,7 +127,7 @@ REACT_APP_API_BACKEND = [API_URL]
  
   <tr>
     <td><image src="./screenshoot/regis.png" alt="Register Page" width=100%></td>
-    <td><image src="./screenshoot/login.png" alt="Login Pagee" width=100%/></td>
+    <td><image src="./screenshoot/loginfix.png" alt="Login Pagee" width=100%/></td>
   </tr>
    <tr>
     <td>Register Page</td>
@@ -135,8 +135,8 @@ REACT_APP_API_BACKEND = [API_URL]
   </tr>
   
   <tr>
-    <td><image src="./screenshoot/Belanja (3).png" alt="Home Page" width=100% ></td>
-    <td><image src="./screenshoot/Belanja (2).png" alt="Detail Product Page" width=100%/></td>
+    <td><image src="./screenshoot/home fix.png" alt="Home Page" width=100% ></td>
+    <td><image src="./screenshoot/DETAILfix.png" alt="Detail Product Page" width=100%/></td>
   </tr>
   <tr>
     <td>Home Page</td>
@@ -144,8 +144,8 @@ REACT_APP_API_BACKEND = [API_URL]
   </tr>
 
   <tr>
-    <td><image src="./screenshoot/my Poruducts.png" alt="My Product" width=100%></td>
-    <td><image src="./screenshoot/chekout.png" alt="Checkout Page" width=100%></td>
+    <td><image src="./screenshoot/My products fix.png" alt="My Product" width=100%></td>
+    <td><image src="./screenshoot/checkout fix.png" alt="Checkout Page" width=100%></td>
   </tr>
   <tr>
       <td>My Product</td>
@@ -153,8 +153,8 @@ REACT_APP_API_BACKEND = [API_URL]
   </tr>
   
   <tr>
-    <td><image src="./screenshoot/products list.png" alt="List My Product" width=100%></td>
-        <td><image src="./screenshoot/add.png" alt="Salling Product" width=100%></td>
+    <td><image src="./screenshoot/products list fix.png" alt="List My Product" width=100%></td>
+        <td><image src="./screenshoot/edit fix.png" alt="Salling Product" width=100%></td>
   </tr>
   <tr>
       <td>List My Product</td>
@@ -162,8 +162,8 @@ REACT_APP_API_BACKEND = [API_URL]
   </tr>
   
   <tr>
-    <td><image src="./screenshoot/edit product.png" alt="Edit Product" width=100%></td>
-    <td><image src="./screenshoot/profil.png" alt="Update Profil" width=100%></td>
+    <td><image src="./screenshoot/create fix.png" alt="Edit Product" width=100%></td>
+    <td><image src="./screenshoot/profiles blanja fix.png" alt="Update Profil" width=100%></td>
   </tr>
   <tr>
       <td>Salling Product</td>

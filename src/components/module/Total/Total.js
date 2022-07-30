@@ -1,7 +1,7 @@
 import React from "react";
 import "../Bag/Bag.css";
-import { Link } from "react-router-dom";
-import Button from "../../base/Button/Button"
+// import { Link } from "react-router-dom";
+// import Button from "../../base/Button/Button"
 const Total = ({
   totalPrice,
   deleveri,
@@ -9,6 +9,7 @@ const Total = ({
   Sumprice,
   price,
   priceBag,
+  children,
 }) => {
   return (
     <div className="col-lg-4">
@@ -17,10 +18,10 @@ const Total = ({
         <table className="mt-2">
           <tr>
             <th className="text-left sum-price">{totalPrice}</th>
-            <td className="float-end text-black">{priceBag}</td>
+            <td className="float-end text-black"> : {priceBag}</td>
           </tr>
           <tr>
-            <th className="text-left sum-price">{deleveri}</th>
+            <th className="text-left sum-price"> {deleveri}</th>
             <td className="float-end text-black">{price}</td>
           </tr>
         </table>
@@ -31,12 +32,8 @@ const Total = ({
             <td className="float-end text-end text-black">{Sumprice}</td>
           </tr>
         </table>
-        <Link to="/Checkout">
-          <Button
-            className="mt-3 w-100 btn btn-checkout"
-            title=" Select payment"
-          ></Button>
-        </Link>
+        {children}
+      
       </div>
     </div>
   );

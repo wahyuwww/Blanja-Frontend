@@ -20,7 +20,7 @@ const NavbarBase = ({ onChange, onClick, src,srcCart }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const navigate = useNavigate();
-  const { data } = useSelector((state) => state.todo);
+   const data  = useSelector((state) => state.bag);
   console.log(user);
   const handleSignOut = () => {
     localStorage.removeItem("refreshToken");
@@ -144,7 +144,7 @@ const NavbarBase = ({ onChange, onClick, src,srcCart }) => {
                   >
                     <img src={cart} alt="" className="icon-cart mb-2" />
                     <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      {data.length}
+                      {data.cart.length}
                     </span>
                   </button>
                 </Link>

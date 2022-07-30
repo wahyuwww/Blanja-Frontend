@@ -2,92 +2,70 @@
 import React, { useEffect, useState } from "react";
 import "./StyleDetail.css";
 // import axios from "axios";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link,useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import retanggle from "../../../../assets/image/detail products/Rectangle 21.png";
 import shape from "../../../../assets/image/detail products/Shape (1).png";
 // import {
 //   selectedProduct,
 // } from "../../../../configs/redux/actions/productsActions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import {
   cartAction,
   addTodolist,
 } from "../../../../configs/redux/actions/cartAction";
+import { addMycart } from "../../../../configs/redux/actions/bagAction";
+import {FormatRupiah} from "@arismun/format-rupiah"
+
+
 const Content = () => {
-  //  const navigate = useNavigate();
-  // const [name, setName] = useState("");
-  // const [description, setDeskripsion] = useState("");
-  // //  const [stock, setStock] = useState("");
-  // const [typestock, setTypestock] = useState("");
-  // const [price, setPrice] = useState("");
-  // const [merk, setMerk] = useState("");
-  // const [imagePreview, setImagePreview] = useState(
-  //   "https://fakeimg.pl/350x200/"
-  // );
+  const navigate = useNavigate()
   const { id } = useParams();
-  // const product = useSelector((state) => state.product);
-
    const dispatch = useDispatch();
-  // useEffect(() => {
-  //   getProductById();
-  // },);
-
-  //  const onImageUpload = (e) => {
-  //    const file = e.target.files[0];
-  //    setImage(file);
-  //    setImagePreview(URL.createObjectURL(file));
-  //  };
   const { data } = useSelector((state) => state.carts);
   const { name, price, typestock, merk, image, description } = data;
-  console.log(data)
-  //  const [todo, setTodo] = useState("");
-  
-   const handleBag = () => {
-     dispatch(addTodolist(data));
-    //  setTodo("");
-   };
 
-  // const fetchProductDetail = async () => {
-  //   const response = await axios
-  //     .get(`${process.env.REACT_APP_API_BACKEND}/products/${id}`)
-  //     .catch((err) => {
-  //       console.log( err);
-  //     });
-  //   // console.log(response.data.data);
-  //   dispatch(selectedProduct(response.data.data));
-  // };
   useEffect(() => {
     dispatch(cartAction(id));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // const getProductById = async () => {
-  //   const response = await axios.get(
-  //     `${process.env.REACT_APP_API_BACKEND}/products/${id}`
-  //   );
-  //   console.log(response);
-  //   setImagePreview(response.data.data.image);
-  //   setName(response.data.data.name);
-  //   setPrice(response.data.data.price);
-  //   setMerk(response.data.data.merk);
-  //   setDeskripsion(response.data.data.description);
-  //   setTypestock(response.data.data.typestock);
-  // };
+  const handleAddBag = async (detailProductId, navigate) => {
+    const data = {
+      productId: detailProductId,
+      qty: 1,
+    };
+    // dispatch()
+    addMycart(data, navigate);
+  };
+   const [count, setCount] = useState(1);
+   const handleSum = () => {
+     setCount(count + 1);
+   };
+   const handleMin = () => {
+     setCount(count - 1);
+   };
+   const [countSize, setCounts] = useState(1);
+   const handleSums = () => {
+     setCounts(countSize + 1);
+   };
+   const handleMins = () => {
+     setCounts(countSize - 1);
+   };
   return (
     <div>
       {Object.keys(data).length === 0 ? (
-        <div className="loading">...Loading</div>
+        <div class="text-center">
+          <FontAwesomeIcon icon={faSpinner} spin />
+          &nbsp;Loading
+        </div>
       ) : (
         <div className="container child-page">
           <div className="row mt-3">
             <div className="col-lg-5">
               <div className="galleries">
                 <div className="galleries-container">
-                  <img
-                    src={image}
-                    className="w-100"
-                    alt=""
-                  />
+                  <img src={image} className="w-100" alt="" />
                 </div>
                 <div className="thumb mt-3 text-center">
                   <a
@@ -138,7 +116,9 @@ const Content = () => {
               </div>
               <div className="price-products mt-5">
                 <p className="mb-3 title-price">Price</p>
-                <h3 className="price-detail mt-3">{price}</h3>
+                <h3 className="price-detail mt-3">
+                  <FormatRupiah value={price} />
+                </h3>
               </div>
               <div className="color-products mt-5 mb-2">
                 <p className="title-color">Color</p>
@@ -157,18 +137,18 @@ const Content = () => {
                   <p className="title-jumlah ms-5 text-black">Jumlah</p>
                 </div>
                 <div className="d-flex justify-content-start mt-1 ms-2">
-                  <div className="d-flex btn-min btn">
+                  <div className="d-flex btn-min btn" onClick={handleMins}>
                     <img src={retanggle} className="m-auto icon" alt="" />
                   </div>
-                  <p className="ms-2 me-2 mt-1 size">10</p>
-                  <div className="d-flex btn-max btn">
+                    <p className="ms-2 me-2 mt-1 size">{ countSize}</p>
+                  <div className="d-flex btn-max btn" onClick={handleSums}>
                     <img src={shape} className="m-auto icon" alt="" />
                   </div>
-                  <div className="d-flex btn-min btn ms-5">
+                  <div className="d-flex btn-min btn ms-5" onClick={handleMin}>
                     <img src={retanggle} className="m-auto icon" alt="" />
                   </div>
-                  <p className="ms-2 me-2 mt-1 size">1</p>
-                  <div className="d-flex btn-max btn">
+                  <p className="ms-2 me-2 mt-1 size">{count}</p>
+                  <div className="d-flex btn-max btn" onClick={handleSum}>
                     <img src={shape} className="m-auto icon" alt="" />
                   </div>
                 </div>
@@ -180,7 +160,15 @@ const Content = () => {
                   </div>
                   <div className="col-lg-4 ms-1">
                     <Link to="/Bag">
-                      <button className="btn btn-bag" onClick={handleBag}>Add bag</button>
+                      <button
+                        className="btn btn-bag"
+                        onClick={() => {
+                          console.log(data.id);
+                          handleAddBag(data.id, navigate);
+                        }}
+                      >
+                        Add bag
+                      </button>
                     </Link>
                   </div>
                   <div className="col-lg-5 ms-1">

@@ -80,16 +80,16 @@ const EditProfil = () => {
         },
       }
     );
-    console.log(response);
+    console.log(response.data.data[0]);
     setName(response.data.data[0].name);
-    setImagePreview(response.data.data[0].date_of_brith);
-    setImage(response.data.data[0].date_of_brith);
+    setImagePreview(response.data.data[0].date_of_brith || avatar);
+    setImage(response.data.data[0].date_of_brith || avatar);
     setDate_of_brith(response.data.data[0].image);
-    setPhonenumber(response.data.data[0].phonenumber);
-    setGender(response.data.data[0].gander);
+    setPhonenumber(response.data.data[0].phonenumber || null);
+    setGender(response.data.data[0].gender);
     setEmail(response.data.data[0].email);
   };
-  console.log(name)
+  console.log(gender);
   return (
     <div className="my-bag">
       <div className="row">
@@ -227,7 +227,7 @@ const EditProfil = () => {
                   </div>
                   <div className="col-sm-3 image-profil text-center">
                     <img
-                      src={imagePreview !== undefined ? imagePreview :  avatar}
+                      src={imagePreview}
                       className="rounded-circle imagas-profile"
                       alt=""
                     />

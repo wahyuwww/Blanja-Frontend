@@ -8,7 +8,7 @@ import cart from "../../../assets/image/search.svg";
 import Profil from "../../../assets/image/profil.png";
 import bell from "../../../assets/image/bell (1) 1.png";
 import mail from "../../../assets/image/mail (3) 1.png";
-import { Dropdown, Button, Modal } from "react-bootstrap";
+import { Dropdown, Button, Modal, DropdownButton } from "react-bootstrap";
 import swal from "sweetalert2";
 import axios from "axios";
 // import axios from "axios";
@@ -156,7 +156,37 @@ const NavbarBase = ({ onChange, onClick, src,srcCart }) => {
                   <img src={Profil} alt="" className="rounded-circle" />
                 </Link>
               </form> */}
-              <Dropdown>
+              <DropdownButton
+                align="end"
+                title={
+                  <img
+                    src={date_of_brith ? date_of_brith : Profil}
+                    alt=""
+                    width={35}
+                    height={35}
+                    className="rounded-circle"
+                  />
+                }
+                variant="link"
+                id="dropdown-menu-align-end"
+              >
+                <Dropdown.Item variant="link">
+                  {" "}
+                  <p>hallu : {user.name}</p>
+                </Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item variant="secondary" eventKey="4">
+                  {" "}
+                  <Link to="/profil"> Profil</Link>
+                </Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item eventKey="4" variant="danger">
+                  <Link to="/login" onClick={() => handleSignOut()}>
+                    Logout
+                  </Link>
+                </Dropdown.Item>
+              </DropdownButton>
+              {/* <Dropdown>
                 <Dropdown.Toggle variant="link" id="dropdown-basic">
                   <img
                     src={date_of_brith ? date_of_brith : Profil}
@@ -191,7 +221,7 @@ const NavbarBase = ({ onChange, onClick, src,srcCart }) => {
                     </Link>
                   </Dropdown.Item>
                 </Dropdown.Menu>
-              </Dropdown>
+              </Dropdown> */}
             </>
           ) : (
             <>

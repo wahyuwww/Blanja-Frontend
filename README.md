@@ -154,7 +154,7 @@ REACT_APP_API_BACKEND = [API_URL]
   
   <tr>
     <td><image src="./screenshoot/list product.png" alt="List My Product" width=100%></td>
-        <td><image src="./screenshoot/edit prodocut.png" alt="Salling Product" width=100%></td>
+        <td><image src="./screenshoot/EDIT FIX.png" alt="Salling Product" width=100%></td>
   </tr>
   <tr>
       <td>List My Product</td>
@@ -163,7 +163,7 @@ REACT_APP_API_BACKEND = [API_URL]
   
   <tr>
     <td><image src="./screenshoot/addproducts.png" alt="Edit Product" width=100%></td>
-    <td><image src="./screenshoot/profiles blanja fix.png" alt="Update Profil" width=100%></td>
+    <td><image src="./screenshoot/profil revisi fix.png" alt="Update Profil" width=100%></td>
   </tr>
   <tr>
       <td>Salling Product</td>
